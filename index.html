@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chemistry – VSEPR, Hybridization &amp; Polarity</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f0f7ff;--bg2:#e2eeff;--bg3:#c8dcff;--ink:#0a1a2e;--ink2:#1a2e48;--ink3:#4a6080;
+  --c1:#1a60b8;--c1l:#ddeaff;--c2:#0e7240;--c2l:#d2f4e4;--c3:#8a5e00;--c3l:#fff3c4;
+  --c4:#076060;--c4l:#cdf0f0;--c5:#8a1a1a;--c5l:#ffd8d8;--c6:#6e1a8a;--c6l:#f0d8ff;
+  --bd:#b0cce8;--r:9px;--sh:0 2px 12px rgba(26,96,184,.07);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.7;}
+.hero{background:linear-gradient(145deg,#051020 0%,#0a2040 55%,#1a60b8 100%);color:#fff;padding:3.5rem 2rem 3rem;text-align:center;position:relative;overflow:hidden;}
+.hero::after{content:'9';position:absolute;right:0;top:-.5rem;font-size:20rem;font-weight:900;color:rgba(255,255,255,.04);line-height:1;pointer-events:none;user-select:none;}
+.hero-tag{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#80c8ff;margin-bottom:.6rem;}
+.hero h1{font-size:clamp(2rem,5vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:.4rem;}
+.hero h1 em{color:#ffd060;font-style:normal;}
+.hero-sub{font-size:14px;color:#a0c8e8;font-style:italic;}
+.hero-pills{display:flex;justify-content:center;gap:.6rem;margin-top:1.3rem;flex-wrap:wrap;}
+.hp{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:3px 13px;font-size:11.5px;font-family:'JetBrains Mono',monospace;color:#c8e4ff;}
+nav{background:#fff;border-bottom:1px solid var(--bd);padding:.5rem 1.5rem;position:-webkit-sticky;position:sticky;top:0;z-index:200;box-shadow:0 1px 8px rgba(26,96,184,.06);}
+.ni{max-width:960px;margin:0 auto;display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;}
+.nl{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.14em;text-transform:uppercase;margin-right:.3rem;}
+.nb{font-size:12px;font-weight:600;padding:3px 10px;border:1.5px solid var(--bd);background:var(--bg);color:var(--ink2);cursor:pointer;border-radius:14px;transition:.15s;text-decoration:none;}
+.nb:hover{background:var(--c1);color:#fff;border-color:var(--c1);}
+.shuf{background:#fffae6;border:1.5px solid #c89000;color:#6a4800;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:600;padding:4px 12px;border-radius:14px;cursor:pointer;transition:.15s;}
+.shuf:hover{background:#c89000;color:#fff;}
+.wrap{max-width:960px;margin:0 auto;padding:1.5rem 1.5rem 5rem;}
+/* Student header box */
+.student-box{background:#fff;border:2px solid var(--c1);border-radius:var(--r);padding:1.2rem 1.5rem;margin:1.2rem 0 1.5rem;box-shadow:var(--sh);}
+.student-box h3{font-size:13px;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8rem;font-family:'JetBrains Mono',monospace;}
+.student-fields{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+.sf-group{display:flex;flex-direction:column;gap:.25rem;}
+.sf-group label{font-size:11px;font-weight:600;color:var(--ink3);letter-spacing:.05em;text-transform:uppercase;}
+.sf-group input{border:1.5px solid var(--bd);border-radius:6px;padding:.38rem .65rem;font-size:13.5px;font-family:'Inter',sans-serif;color:var(--ink);background:#fafcff;transition:.15s;}
+.sf-group input:focus{outline:none;border-color:var(--c1);background:#fff;}
+.pgbox{background:#fff;border:1.5px solid var(--bd);border-radius:var(--r);padding:1rem 1.4rem;margin:1rem 0;display:flex;gap:2.5rem;flex-wrap:wrap;align-items:center;box-shadow:var(--sh);}
+.pg-t{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);width:100%;margin-bottom:.1rem;}
+.pv{font-size:2rem;font-weight:800;line-height:1;}
+.pl{font-size:10px;color:var(--ink3);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin-top:2px;}
+.stag{display:inline-flex;align-items:center;padding:.28rem 1rem .28rem .65rem;border-left:4px solid var(--c1);background:var(--c1l);border-radius:0 20px 20px 0;margin:2rem 0 .75rem;}
+.stag span{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c1);}
+.stag.g{border-left-color:var(--c2);background:var(--c2l);} .stag.g span{color:var(--c2);}
+.stag.o{border-left-color:var(--c3);background:var(--c3l);} .stag.o span{color:var(--c3);}
+.stag.t{border-left-color:var(--c4);background:var(--c4l);} .stag.t span{color:var(--c4);}
+.cgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin:.4rem 0 1.4rem;}
+.cc{background:#fff;border:1.5px solid var(--bd);border-radius:var(--r);padding:1rem 1.1rem;box-shadow:var(--sh);border-top:4px solid var(--c1);}
+.cc.g{border-top-color:var(--c2);}.cc.o{border-top-color:var(--c3);}.cc.t{border-top-color:var(--c4);}.cc.r{border-top-color:var(--c5);}
+.cc h3{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:.5rem;}
+.cc p,.cc li{font-size:13.5px;color:var(--ink2);line-height:1.65;}
+.cc ul{padding-left:1.1rem;} .cc li{margin-bottom:.2rem;}
+.fm{background:#051020;color:#a8ccee;padding:.55rem .85rem;border-radius:5px;font-family:'JetBrains Mono',monospace;font-size:12.5px;margin:.5rem 0;line-height:1.9;}
+.fm .fl{font-size:9px;color:#3a5a78;letter-spacing:.15em;text-transform:uppercase;display:block;margin-bottom:.12rem;}
+.kf{border-left:4px solid var(--c3);background:var(--c3l);padding:.4rem .75rem;border-radius:0 6px 6px 0;font-size:13px;color:#6a4000;font-weight:600;margin:.45rem 0;}
+.ex{background:#fff;border:1.5px solid var(--c1);border-radius:var(--r);margin:.65rem 0 1.4rem;overflow:hidden;box-shadow:var(--sh);}
+.ex-hd{background:var(--c1);color:#fff;padding:.45rem 1rem;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;}
+.ex-body{padding:.8rem 1.1rem;}
+.ex-body p{font-size:13.5px;color:var(--ink2);line-height:1.65;margin-bottom:.35rem;}
+.ex-step{background:var(--c1l);border-left:3px solid var(--c1);padding:.38rem .7rem;border-radius:0 5px 5px 0;font-size:13px;color:var(--ink2);margin:.28rem 0;}
+.ex-step b{color:var(--c1);font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;display:block;margin-bottom:.1rem;}
+.mn{font-family:'JetBrains Mono',monospace;background:var(--bg3);padding:1px 5px;border-radius:3px;font-size:12.5px;}
+.dt{width:100%;border-collapse:collapse;font-size:13px;margin:.5rem 0;}
+.dt th{background:#051020;color:#fff;padding:.35rem .6rem;text-align:left;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.07em;}
+.dt td{padding:.32rem .6rem;border-bottom:1px solid var(--bd);color:var(--ink2);}
+.dt tr:nth-child(even) td{background:var(--bg2);}
+.gb{background:#fff;border:1.5px solid var(--bd);border-radius:var(--r);padding:.9rem 1.1rem;margin:.65rem 0 1.4rem;box-shadow:var(--sh);}
+.gb-hd{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--c1);font-weight:700;margin-bottom:.6rem;}
+.gb-note{font-size:12.5px;color:var(--ink3);font-style:italic;margin-top:.55rem;line-height:1.55;}
+.chem-fig{margin:.5rem 0 .35rem;overflow-x:auto;-webkit-overflow-scrolling:touch;}
+.chem-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.chem-box{border:1.5px solid var(--bd);border-radius:8px;padding:8px;background:#fff;text-align:center;flex-shrink:0;}
+.chem-cap{font-size:11px;color:var(--ink3);margin-bottom:4px;font-weight:600;}
+.chem-fig svg{display:block;max-width:100%;height:auto;}
+.qhd{display:flex;align-items:center;justify-content:space-between;margin:1.8rem 0 .9rem;}
+.qhd h2{font-size:1.05rem;font-weight:700;color:var(--ink2);}
+.qcnt{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;}
+.qi{background:#fff;border:1.5px solid var(--bd);border-radius:var(--r);margin-bottom:.65rem;overflow:hidden;transition:box-shadow .14s;box-shadow:var(--sh);}
+.qi:hover{box-shadow:0 3px 14px rgba(26,96,184,.1);}
+.qs{padding:.8rem 1.1rem;display:grid;grid-template-columns:30px 1fr;gap:.4rem;align-items:start;}
+.qn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink3);padding-top:2px;font-weight:600;}
+.qt{font-size:14px;line-height:1.58;}
+.og{display:grid;grid-template-columns:1fr 1fr;gap:.33rem;padding:0 1.1rem .8rem 2.5rem;}
+.ob{background:var(--bg);border:1.5px solid var(--bd);border-radius:6px;padding:.38rem .7rem;cursor:pointer;text-align:left;font-size:13px;color:var(--ink2);transition:.13s;line-height:1.42;}
+.ob:hover{background:var(--c1l);border-color:var(--c1);}
+.ob.correct{background:var(--c2l);border-color:var(--c2);color:var(--c2);font-weight:600;}
+.ob.wrong{background:var(--c5l);border-color:var(--c5);color:var(--c5);}
+.fbr{padding:0 1.1rem .8rem 2.5rem;display:none;}
+.fbr.show{display:block;}
+.fbok{color:var(--c2);font-size:13px;font-weight:700;}
+.fbno{color:var(--c5);font-size:13px;font-weight:700;}
+.fbex{margin-top:.28rem;font-size:12.5px;color:var(--c4);font-style:italic;line-height:1.52;}
+/* Short Answer */
+.sa-item{background:#fff;border:1.5px solid var(--bd);border-radius:var(--r);margin-bottom:.65rem;overflow:hidden;box-shadow:var(--sh);}
+.sa-hd{padding:.8rem 1.1rem;display:grid;grid-template-columns:30px 1fr;gap:.4rem;align-items:start;}
+.sa-area{padding:0 1.1rem .8rem 2.5rem;}
+.sa-area textarea{width:100%;border:1.5px solid var(--bd);border-radius:6px;padding:.5rem .7rem;font-size:13.5px;font-family:'Inter',sans-serif;color:var(--ink);background:#fafcff;resize:vertical;min-height:70px;transition:.15s;}
+.sa-area textarea:focus{outline:none;border-color:var(--c1);background:#fff;}
+.sa-area .sa-ans-btn{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;background:none;border:1.5px solid var(--bd);color:var(--ink3);padding:3px 10px;border-radius:12px;cursor:pointer;transition:.14s;margin-top:.35rem;}
+.sa-area .sa-ans-btn:hover{background:var(--c1);color:#fff;border-color:var(--c1);}
+.sa-ans{display:none;margin-top:.4rem;background:var(--c2l);border-left:3px solid var(--c2);padding:.4rem .7rem;border-radius:0 5px 5px 0;font-size:13px;color:var(--ink2);line-height:1.52;}
+.sa-ans.open{display:block;}
+/* Submit section */
+.submit-section{background:#fff;border:2px solid var(--c1);border-radius:var(--r);padding:1.4rem 1.5rem;margin:2rem 0;box-shadow:var(--sh);}
+.submit-section h3{font-size:1rem;font-weight:700;color:var(--c1);margin-bottom:.5rem;}
+.submit-section p{font-size:13px;color:var(--ink3);margin-bottom:1rem;}
+.btn-row{display:flex;gap:.8rem;flex-wrap:wrap;}
+.btn-submit{background:var(--c1);color:#fff;border:none;border-radius:8px;padding:.65rem 1.4rem;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;font-family:'Inter',sans-serif;}
+.btn-submit:hover{background:#1448a0;}
+.btn-print{background:#fff;color:var(--c1);border:2px solid var(--c1);border-radius:8px;padding:.65rem 1.4rem;font-size:14px;font-weight:700;cursor:pointer;transition:.15s;font-family:'Inter',sans-serif;}
+.btn-print:hover{background:var(--c1l);}
+
+hr.rule{border:none;border-top:1.5px solid var(--bd);margin:2.5rem 0;}
+.sb{position:-webkit-sticky;position:sticky;bottom:1rem;max-width:400px;margin:0 auto;background:#051020;color:#fff;border-radius:22px;padding:.7rem 1.2rem;display:flex;align-items:center;gap:1rem;font-family:'JetBrains Mono',monospace;font-size:12px;box-shadow:0 4px 28px rgba(0,0,0,.28);z-index:100;opacity:0;transition:opacity .3s;pointer-events:none;}
+.sb.on{opacity:1;pointer-events:auto;}
+.sb-tr{flex:1;height:5px;background:#1a2838;border-radius:3px;}
+.sb-f{height:100%;background:#ffd060;border-radius:3px;transition:width .4s;}
+@media(max-width:560px){.og,.cgrid,.student-fields{grid-template-columns:1fr;}.btn-row{flex-direction:column;}}
+@media print{nav,.sb,.btn-row,.shuf,#submitted-overlay{display:none!important;}.wrap{padding-bottom:1rem;}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-tag">Chemistry · Unit — Covalent Bonding</div>
+  <h1>VSEPR, Hybridization <em>&amp; Polarity</em></h1>
+  <div class="hero-sub">Electron-Domain Geometry · Molecular Shape · Hybrid Orbitals · Resonance &amp; Bond Order</div>
+  <div class="hero-pills">
+    <span class="hp">12 Multiple Choice</span><span class="hp">7 Short Answer</span>
+    <span class="hp">Study Notes Included</span><span class="hp">Submit Your Work</span>
+  </div>
+</div>
+<nav><div class="ni">
+  <span class="nl">Jump to</span>
+  <a class="nb" href="#s1">VSEPR &amp; Domains</a>
+  <a class="nb" href="#s2">Geometry &amp; Hybridization</a>
+  <a class="nb" href="#s3">Polarity</a>
+  <a class="nb" href="#s4">Resonance &amp; Bond Order</a>
+  <a class="nb" href="#mc">12 MCQs</a>
+  <a class="nb" href="#sa">Short Answer</a>
+  <button class="shuf" id="shuf">🔀 Shuffle</button>
+</div></nav>
+
+<div class="wrap">
+
+<!-- STUDENT INFO -->
+<div class="student-box" id="student-box">
+  <h3 id="stu-box-title">📋 Step 1 — Enter Your Information, Then Lock It</h3>
+  <div class="student-fields" id="student-fields">
+    <div class="sf-group">
+      <label>First &amp; Last Name</label>
+      <input type="text" id="stu-name" placeholder="e.g. Jane Smith">
+    </div>
+    <div class="sf-group">
+      <label>Period / Class</label>
+      <input type="text" id="stu-period" placeholder="e.g. Period 3">
+    </div>
+    <div class="sf-group">
+      <label>Date</label>
+      <input type="text" id="stu-date" placeholder="e.g. May 15, 2026">
+    </div>
+    <div class="sf-group">
+      <label>Teacher</label>
+      <input type="text" id="stu-teacher" placeholder="e.g. Ms. Johnson">
+    </div>
+  </div>
+  <div style="margin-top:.85rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;" id="lock-row">
+    <button class="btn-submit" id="btn-lock-info" onclick="lockStudentInfo()" style="background:var(--c2);font-size:13px;padding:.5rem 1.1rem;">🔒 Lock Info &amp; Start Assignment</button>
+    <span style="font-size:12px;color:var(--ink3);">Your name will be locked to prevent changes after you start.</span>
+  </div>
+  <div id="locked-banner" style="display:none;margin-top:.7rem;background:var(--c2l);border:1.5px solid var(--c2);border-radius:6px;padding:.5rem .85rem;font-size:13px;color:#0a4020;font-weight:600;">✅ Student info locked. Complete all questions, then click Submit at the bottom.</div>
+</div>
+
+<div class="pgbox">
+  <div class="pg-t">Your Progress (Multiple Choice)</div>
+  <div><div class="pv" id="pa" style="color:var(--c1)">0</div><div class="pl">Attempted</div></div>
+  <div><div class="pv" id="pc" style="color:var(--c2)">0</div><div class="pl">Correct</div></div>
+  <div><div class="pv" id="pw" style="color:var(--c5)">0</div><div class="pl">Wrong</div></div>
+  <div><div class="pv" id="pp" style="color:var(--c3)">—</div><div class="pl">Score %</div></div>
+</div>
+
+<!-- S1 VSEPR & DOMAINS -->
+<div id="s1">
+<div class="stag"><span>Lesson 1 — VSEPR Theory &amp; Electron Domains</span></div>
+<div class="cgrid">
+  <div class="cc">
+    <h3>The Big Idea</h3>
+    <ul>
+      <li>Valence Shell Electron Pair Repulsion (VSEPR): regions of electron density around a central atom <b>repel each other</b></li>
+      <li>Domains spread out to be <b>as far apart as possible</b> — this minimizes repulsion</li>
+      <li>A domain can be a <b>bonding pair</b> OR a <b>lone pair</b> — both count</li>
+    </ul>
+    <p style="font-size:13px;margin-top:.4rem;">The arrangement that minimizes repulsion between all domains is called the <b>electron-domain geometry</b>.</p>
+  </div>
+  <div class="cc g">
+    <h3>Counting Electron Domains</h3>
+    <ul>
+      <li>Look only at the <b>central atom</b></li>
+      <li>Count: (# of bonding domains) + (# of lone pairs)</li>
+      <li>A double or triple bond still counts as <b>ONE</b> domain — it's one region of electron density, just a denser one</li>
+    </ul>
+    <div class="kf">⚠ Lone pairs take up MORE room than bonding pairs — they push harder on their neighbors and squeeze the remaining angles smaller.</div>
+  </div>
+  <div class="cc o">
+    <h3>Electron-Domain Geometry Names</h3>
+    <ul>
+      <li><b>2 domains</b> → Linear</li>
+      <li><b>3 domains</b> → Trigonal planar</li>
+      <li><b>4 domains</b> → Tetrahedral</li>
+      <li><b>5 domains</b> → Trigonal bipyramidal</li>
+      <li><b>6 domains</b> → Octahedral</li>
+    </ul>
+  </div>
+</div>
+
+<div class="gb">
+  <div class="gb-hd">Quick Reference — Electron-Domain Geometry</div>
+  <table class="dt">
+    <tr><th>Total domains</th><th>Electron-domain geometry</th><th>Ideal bond angle(s)</th></tr>
+    <tr><td>2</td><td>Linear</td><td>180°</td></tr>
+    <tr><td>3</td><td>Trigonal planar</td><td>120°</td></tr>
+    <tr><td>4</td><td>Tetrahedral</td><td>109.5°</td></tr>
+    <tr><td>5</td><td>Trigonal bipyramidal</td><td>90° and 120°</td></tr>
+    <tr><td>6</td><td>Octahedral</td><td>90°</td></tr>
+  </table>
+  <div class="gb-note">This is the arrangement of ALL domains (bonding + lone pairs) — before you decide what the molecule actually looks like.</div>
+</div>
+</div>
+
+<hr class="rule">
+
+<!-- S2 GEOMETRY & HYBRIDIZATION -->
+<div id="s2">
+<div class="stag g"><span>Lesson 2 — Molecular Geometry &amp; Hybridization</span></div>
+<div class="cgrid">
+  <div class="cc">
+    <h3>Molecular Geometry ≠ Electron-Domain Geometry</h3>
+    <ul>
+      <li>Molecular geometry is the shape you'd actually <b>see</b> — lone pairs are invisible, but they still push</li>
+      <li>Same domain count, different molecular geometry depending on how many domains are lone pairs</li>
+      <li>Example: 4 domains → tetrahedral (0 LP), trigonal pyramidal (1 LP), or bent (2 LP)</li>
+    </ul>
+  </div>
+  <div class="cc g">
+    <h3>Hybridization Quick Map</h3>
+    <ul>
+      <li><b>sp</b> — 2 domains, 180°</li>
+      <li><b>sp²</b> — 3 domains, 120°</li>
+      <li><b>sp³</b> — 4 domains, 109.5°</li>
+      <li><b>sp³d</b> — 5 domains, 90°/120°</li>
+      <li><b>sp³d²</b> — 6 domains, 90°</li>
+    </ul>
+    <div class="kf">Hybridization describes the central atom's own orbitals — always read off the TOTAL domain count, not the molecular geometry name.</div>
+  </div>
+  <div class="cc o">
+    <h3>Sigma (σ) vs. Pi (π) Bonds</h3>
+    <ul>
+      <li><b>σ bond:</b> direct, end-to-end orbital overlap. Present in every single, double, and triple bond.</li>
+      <li><b>π bond:</b> sideways overlap of unhybridized p orbitals. Only in double/triple bonds, IN ADDITION to a σ bond.</li>
+      <li>A π bond blocks free rotation → double bonds can have cis/trans (geometric) isomers</li>
+    </ul>
+  </div>
+</div>
+
+<div class="gb">
+  <div class="gb-hd">Quick Reference — Domains, Lone Pairs, Shape &amp; Hybridization</div>
+  <table class="dt">
+    <tr><th>Domains</th><th>Lone pairs</th><th>Molecular geometry</th><th>Hybridization</th></tr>
+    <tr><td>2</td><td>0</td><td>Linear</td><td>sp</td></tr>
+    <tr><td>3</td><td>0</td><td>Trigonal planar</td><td>sp²</td></tr>
+    <tr><td>3</td><td>1</td><td>Bent</td><td>sp²</td></tr>
+    <tr><td>4</td><td>0</td><td>Tetrahedral</td><td>sp³</td></tr>
+    <tr><td>4</td><td>1</td><td>Trigonal pyramidal</td><td>sp³</td></tr>
+    <tr><td>4</td><td>2</td><td>Bent</td><td>sp³</td></tr>
+    <tr><td>5</td><td>0</td><td>Trigonal bipyramidal</td><td>sp³d</td></tr>
+    <tr><td>5</td><td>1</td><td>Seesaw</td><td>sp³d</td></tr>
+    <tr><td>5</td><td>2</td><td>T-shaped</td><td>sp³d</td></tr>
+    <tr><td>6</td><td>0</td><td>Octahedral</td><td>sp³d²</td></tr>
+    <tr><td>6</td><td>1</td><td>Square pyramidal</td><td>sp³d²</td></tr>
+    <tr><td>6</td><td>2</td><td>Square planar</td><td>sp³d²</td></tr>
+  </table>
+</div>
+
+<div class="ex">
+  <div class="ex-hd">Worked Example — Predicting Shape from a Lewis Structure</div>
+  <div class="ex-body">
+    <p><b>Species:</b> ozone, O₃, and the trichlorostannate ion, SnCl₃⁻</p>
+    <div class="chem-fig"><div class="chem-row"><div class="chem-box"><div class="chem-cap">O₃ (one resonance form)</div><svg viewBox="0 0 150 105" width="150" height="105" class="" xmlns="http://www.w3.org/2000/svg"><line x1="50" y1="80" x2="80" y2="45" stroke="#24313f" stroke-width="1.7" /><line x1="80.51403314863047" y1="43.69778269013615" x2="118.51403314863047" y2="58.69778269013615" stroke="#24313f" stroke-width="1.7" /><line x1="79.48596685136953" y1="46.30221730986385" x2="117.48596685136953" y2="61.30221730986385" stroke="#24313f" stroke-width="1.7" /><circle cx="50" cy="80" r="9" fill="#fff"/><text x="50" y="84.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="80" cy="45" r="9" fill="#fff"/><text x="80" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="118" cy="60" r="9" fill="#fff"/><text x="118" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="75.5" cy="58.0" r="1.6" fill="#24313f"/><circle cx="84.5" cy="58.0" r="1.6" fill="#24313f"/><circle cx="41.2" cy="72.0" r="1.6" fill="#24313f"/><circle cx="38.1" cy="80.5" r="1.6" fill="#24313f"/><circle cx="54.5" cy="69.0" r="1.6" fill="#24313f"/><circle cx="45.5" cy="69.0" r="1.6" fill="#24313f"/><circle cx="129.0" cy="64.5" r="1.6" fill="#24313f"/><circle cx="129.0" cy="55.5" r="1.6" fill="#24313f"/><circle cx="119.6" cy="71.8" r="1.6" fill="#24313f"/><circle cx="127.4" cy="67.3" r="1.6" fill="#24313f"/><circle cx="129.3" cy="56.4" r="1.6" fill="#24313f"/><circle cx="123.5" cy="49.5" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">SnCl₃⁻</div><svg viewBox="0 0 135 120" width="135" height="120" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65" y1="68" x2="65" y2="23" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="68" x2="25" y2="92" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="68" x2="105" y2="92" stroke="#24313f" stroke-width="1.7" /><circle cx="65" cy="68" r="11" fill="#fff"/><text x="65" y="72.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Sn</text><circle cx="65" cy="23" r="10" fill="#fff"/><text x="65" y="27.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">Cl</text><circle cx="25" cy="92" r="10" fill="#fff"/><text x="25" y="96.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">Cl</text><circle cx="105" cy="92" r="10" fill="#fff"/><text x="105" y="96.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">Cl</text><circle cx="60.5" cy="83.0" r="1.6" fill="#24313f"/><circle cx="69.5" cy="83.0" r="1.6" fill="#24313f"/><text x="79" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text></svg></div></div></div>
+    <div class="ex-step"><b>Step 1 — Count domains on the central atom</b>O₃: the central O is bonded to two outer O's (one by a single bond, one by a double bond, in any one resonance form) and carries one lone pair → 3 domains total.<br>SnCl₃⁻: the central Sn is bonded to three Cl atoms and carries one lone pair → 4 domains total.</div>
+    <div class="ex-step"><b>Step 2 — Electron-domain geometry</b>O₃: 3 domains → trigonal planar arrangement.<br>SnCl₃⁻: 4 domains → tetrahedral arrangement.</div>
+    <div class="ex-step"><b>Step 3 — Remove the lone pair(s) to get molecular geometry</b>O₃: one of the three domains is a lone pair, so the visible shape is <b>bent</b> (angle just under 120°).<br>SnCl₃⁻: one of the four domains is a lone pair, so the visible shape is <b>trigonal pyramidal</b> (angle just under 109.5°).</div>
+  </div>
+</div>
+</div>
+
+<hr class="rule">
+
+<!-- S3 POLARITY -->
+<div id="s3">
+<div class="stag o"><span>Lesson 3 — Molecular Polarity</span></div>
+
+<div class="cc" style="margin-bottom:1rem;border-top:4px solid var(--c3);background:#fff;">
+  <h3>The Big Idea</h3>
+  <p style="font-size:14px;"><b>A bond can be polar without the whole molecule being polar.</b> Whether a molecule has a net dipole moment depends on whether the individual bond dipoles cancel out geometrically.</p>
+  <div class="kf">Bond polarity is about electronegativity difference. Molecular polarity is about geometry. You need both to answer a polarity question.</div>
+</div>
+
+<div class="cgrid">
+  <div class="cc">
+    <h3>When Dipoles Cancel (Nonpolar)</h3>
+    <ul>
+      <li>Linear, identical atoms on both ends — e.g. CO₂</li>
+      <li>Trigonal planar, identical substituents, NO lone pair on the central atom — e.g. BF₃</li>
+      <li>Tetrahedral, identical substituents — e.g. CH₄, CCl₄</li>
+      <li>Square planar or octahedral, identical substituents — e.g. XeF₄, SF₆</li>
+    </ul>
+  </div>
+  <div class="cc g">
+    <h3>When Dipoles Don't Cancel (Polar)</h3>
+    <ul>
+      <li>Any lone pair on the central atom almost always breaks the symmetry — e.g. NH₃, H₂O, SO₂</li>
+      <li>Mixed substituents on an otherwise symmetric shape — e.g. CH₂Cl₂, CHCl₃</li>
+      <li>Any diatomic molecule of two different elements — e.g. BrCl, HF</li>
+    </ul>
+    <div class="kf">Rule of thumb: a lone pair on the central atom → almost always polar.</div>
+  </div>
+  <div class="cc o">
+    <h3>Checklist for Any Molecule</h3>
+    <ul>
+      <li>1. Draw the Lewis structure (with lone pairs)</li>
+      <li>2. Determine the molecular geometry</li>
+      <li>3. Ask: do the individual bond dipoles point in directions that cancel by symmetry?</li>
+      <li>4. If yes → nonpolar. If no → polar.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="gb">
+  <div class="gb-hd">Quick Reference — Shape vs. Typical Polarity</div>
+  <table class="dt">
+    <tr><th>Shape</th><th>Example</th><th>Polar?</th></tr>
+    <tr><td>Linear, identical ends</td><td>CO₂</td><td>Nonpolar</td></tr>
+    <tr><td>Bent (lone pair present)</td><td>H₂O, SO₂</td><td>Polar</td></tr>
+    <tr><td>Trigonal planar, identical, no LP</td><td>BF₃</td><td>Nonpolar</td></tr>
+    <tr><td>Trigonal pyramidal</td><td>NH₃</td><td>Polar</td></tr>
+    <tr><td>Tetrahedral, identical substituents</td><td>CH₄, CCl₄</td><td>Nonpolar</td></tr>
+    <tr><td>Tetrahedral, mixed substituents</td><td>CH₂Cl₂, CHCl₃</td><td>Polar</td></tr>
+    <tr><td>Square planar, identical</td><td>XeF₄</td><td>Nonpolar</td></tr>
+    <tr><td>Octahedral, identical</td><td>SF₆</td><td>Nonpolar</td></tr>
+  </table>
+</div>
+</div>
+
+<hr class="rule">
+
+<!-- S4 RESONANCE & BOND ORDER -->
+<div id="s4">
+<div class="stag t"><span>Lesson 4 — Resonance &amp; Bond Order</span></div>
+<div class="cgrid">
+  <div class="cc">
+    <h3>What Resonance Really Means</h3>
+    <ul>
+      <li>Some molecules/ions need more than one valid Lewis structure to be drawn</li>
+      <li>The real molecule is NOT flipping back and forth between them</li>
+      <li>The real structure is an <b>average</b> — a resonance hybrid — of all contributing structures</li>
+    </ul>
+  </div>
+  <div class="cc g">
+    <h3>Bond Order</h3>
+    <div class="fm"><span class="fl">Bond order formula</span>Bond order = (total bonds between two atoms, summed across all resonance structures) / (number of resonance structures)</div>
+    <ul>
+      <li>A single bond only in every structure → bond order 1</li>
+      <li>Double in some structures, single in others → bond order between 1 and 2</li>
+    </ul>
+  </div>
+  <div class="cc o">
+    <h3>Bond Order → Length &amp; Energy</h3>
+    <ul>
+      <li><b>Higher</b> bond order → <b>shorter</b>, <b>stronger</b> bond</li>
+      <li><b>Lower</b> bond order → <b>longer</b>, <b>weaker</b> bond</li>
+      <li>Resonance-averaged bonds are all the SAME length — not a mix of long and short</li>
+    </ul>
+    <div class="kf">This is why the two C–O bonds in a carboxylate group, or all three N–O bonds in nitrate, measure identical lengths experimentally.</div>
+  </div>
+</div>
+
+<div class="ex">
+  <div class="ex-hd">Worked Example — Comparing Bond Order in Nitrate and Nitrite</div>
+  <div class="ex-body">
+    <p><b>Nitrate, NO₃⁻:</b> three equivalent resonance structures, each with one N=O double bond and two N–O single bonds.</p>
+    <div class="chem-fig"><div class="chem-row" style="align-items:flex-start;gap:28px;"><div><div class="chem-row"><svg viewBox="0 0 140 150" width="140" height="150" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.5" y1="70.0" x2="68.5" y2="20.0" stroke="#24313f" stroke-width="1.7" /><line x1="71.5" y1="70.0" x2="71.5" y2="20.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70.0" cy="20.0" r="9" fill="#fff"/><text x="70.0" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="70" y1="70" x2="26.69872981077807" y2="95.0" stroke="#24313f" stroke-width="1.7" /><circle cx="26.69872981077807" cy="95.0" r="9" fill="#fff"/><text x="26.69872981077807" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="38.69872981077807" y="87.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70" y1="70" x2="113.30127018922192" y2="95.00000000000003" stroke="#24313f" stroke-width="1.7" /><circle cx="113.30127018922192" cy="95.00000000000003" r="9" fill="#fff"/><text x="113.30127018922192" y="99.50000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="125.30127018922192" y="87.00000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><circle cx="70" cy="70" r="8" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg><svg viewBox="0 0 42 40" width="42" height="40" class="" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="20" x2="34" y2="20" stroke="#24313f" stroke-width="1.6"/><polygon points="6,20 15,16 15,24" fill="#24313f"/><polygon points="34,20 25,16 25,24" fill="#24313f"/></svg><svg viewBox="0 0 140 150" width="140" height="150" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="70" x2="70.0" y2="20.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70.0" cy="20.0" r="9" fill="#fff"/><text x="70.0" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="82.0" y="12.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70.75" y1="71.29903810567666" x2="27.44872981077807" y2="96.29903810567666" stroke="#24313f" stroke-width="1.7" /><line x1="69.25" y1="68.70096189432334" x2="25.94872981077807" y2="93.70096189432334" stroke="#24313f" stroke-width="1.7" /><circle cx="26.69872981077807" cy="95.0" r="9" fill="#fff"/><text x="26.69872981077807" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="70" y1="70" x2="113.30127018922192" y2="95.00000000000003" stroke="#24313f" stroke-width="1.7" /><circle cx="113.30127018922192" cy="95.00000000000003" r="9" fill="#fff"/><text x="113.30127018922192" y="99.50000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="125.30127018922192" y="87.00000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><circle cx="70" cy="70" r="8" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg><svg viewBox="0 0 42 40" width="42" height="40" class="" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="20" x2="34" y2="20" stroke="#24313f" stroke-width="1.6"/><polygon points="6,20 15,16 15,24" fill="#24313f"/><polygon points="34,20 25,16 25,24" fill="#24313f"/></svg><svg viewBox="0 0 140 150" width="140" height="150" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="70" x2="70.0" y2="20.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70.0" cy="20.0" r="9" fill="#fff"/><text x="70.0" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="82.0" y="12.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70" y1="70" x2="26.69872981077807" y2="95.0" stroke="#24313f" stroke-width="1.7" /><circle cx="26.69872981077807" cy="95.0" r="9" fill="#fff"/><text x="26.69872981077807" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="38.69872981077807" y="87.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70.75" y1="68.70096189432334" x2="114.05127018922192" y2="93.70096189432337" stroke="#24313f" stroke-width="1.7" /><line x1="69.25" y1="71.29903810567666" x2="112.55127018922192" y2="96.29903810567669" stroke="#24313f" stroke-width="1.7" /><circle cx="113.30127018922192" cy="95.00000000000003" r="9" fill="#fff"/><text x="113.30127018922192" y="99.50000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="70" cy="70" r="8" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg></div><div class="chem-cap" style="text-align:center;margin-top:-6px;">Nitrate, NO₃⁻ (3 resonance structures)</div></div><div><div class="chem-row"><svg viewBox="0 0 140 110" width="140" height="110" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.87888602197451" y1="80.99654575824488" x2="28.87888602197451" y2="35.99654575824488" stroke="#24313f" stroke-width="1.7" /><line x1="71.12111397802549" y1="79.00345424175512" x2="31.12111397802549" y2="34.00345424175512" stroke="#24313f" stroke-width="1.7" /><circle cx="30" cy="35" r="9" fill="#fff"/><text x="30" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="70" y1="80" x2="110" y2="35" stroke="#24313f" stroke-width="1.7" /><circle cx="110" cy="35" r="9" fill="#fff"/><text x="110" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="122" y="27" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><circle cx="65.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="74.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="70" cy="80" r="8" fill="#fff"/><text x="70" y="84.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg><svg viewBox="0 0 42 40" width="42" height="40" class="" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="20" x2="34" y2="20" stroke="#24313f" stroke-width="1.6"/><polygon points="6,20 15,16 15,24" fill="#24313f"/><polygon points="34,20 25,16 25,24" fill="#24313f"/></svg><svg viewBox="0 0 140 110" width="140" height="110" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="80" x2="30" y2="35" stroke="#24313f" stroke-width="1.7" /><circle cx="30" cy="35" r="9" fill="#fff"/><text x="30" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="18" y="27" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="68.87888602197451" y1="79.00345424175512" x2="108.87888602197451" y2="34.00345424175512" stroke="#24313f" stroke-width="1.7" /><line x1="71.12111397802549" y1="80.99654575824488" x2="111.12111397802549" y2="35.99654575824488" stroke="#24313f" stroke-width="1.7" /><circle cx="110" cy="35" r="9" fill="#fff"/><text x="110" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="65.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="74.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="70" cy="80" r="8" fill="#fff"/><text x="70" y="84.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg></div><div class="chem-cap" style="text-align:center;margin-top:-6px;">Nitrite, NO₂⁻ (2 resonance structures)</div></div></div></div>
+    <div class="ex-step"><b>Step 1 — Total N–O bonds across all structures</b>Each structure contributes 1 double bond (counts as 2) + 2 single bonds (count as 1 each) = 4 bond-units, spread over 3 resonance structures and 3 equivalent bonds.</div>
+    <div class="ex-step"><b>Step 2 — Bond order</b>Bond order = 4 total bond-units ÷ 3 bonds = <b>1.33</b> for each N–O bond.</div>
+    <p><b>Nitrite, NO₂⁻:</b> two equivalent resonance structures, each with one N=O double bond and one N–O single bond.</p>
+    <div class="ex-step"><b>Step 3 — Bond order</b>(2 + 1) bond-units ÷ 2 bonds = <b>1.5</b> for each N–O bond.</div>
+    <div class="ex-step"><b>Step 4 — Compare</b>1.5 &gt; 1.33, so nitrite's N–O bonds have the HIGHER bond order → they are SHORTER and STRONGER than nitrate's N–O bonds.</div>
+  </div>
+</div>
+</div>
+
+<hr class="rule">
+
+<!-- 12 MCQs -->
+<div id="mc">
+<div class="qhd"><h2>Part 2 — Multiple Choice (12 Questions)</h2><span class="qcnt" id="mc-cnt">click an answer to check it</span></div>
+<div id="mc-box"></div>
+</div>
+
+<hr class="rule">
+
+<!-- 7 Short Answer -->
+<div id="sa">
+<div class="qhd"><h2>Part 3 — Short Answer (7 Questions)</h2><span class="qcnt">Write your answers below, then check each one</span></div>
+<div id="sa-box"></div>
+</div>
+
+<!-- Submit / Export -->
+<div class="submit-section" id="submit-section">
+  <h3>📤 Step 3 — Submit Your Work</h3>
+  <p>When you're done with all questions, click <b>Submit &amp; Download Results</b>. This will download your results file <b>and lock this page</b> — you won't be able to change your answers or your name after submitting.</p>
+  <div id="submit-warning" style="display:none;background:#ffd8d8;border:1.5px solid var(--c5);border-radius:6px;padding:.5rem .85rem;margin-bottom:.8rem;font-size:13px;color:#6a0000;font-weight:600;"></div>
+  <div class="btn-row">
+    <button class="btn-submit" id="btn-final-submit" onclick="finalSubmit()" disabled style="opacity:.45;cursor:not-allowed;">📤 Submit &amp; Download Results</button>
+    <button class="btn-print" onclick="window.print()">🖨️ Print This Page</button>
+  </div>
+  <p style="font-size:12px;color:var(--ink3);margin-top:.6rem;">⚠️ Lock your student info first (Step 1), then complete the assignment. The submit button will become active.</p>
+</div>
+
+<div id="submitted-overlay" style="position:fixed;inset:0;background:rgba(5,16,32,.92);z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:2rem;">
+  <div style="background:#fff;border-radius:14px;padding:2.5rem 2rem;max-width:480px;width:92%;box-shadow:0 8px 48px rgba(0,0,0,.4);">
+    <div style="font-size:3rem;margin-bottom:.8rem;">✅</div>
+    <h2 style="color:var(--c2);font-size:1.3rem;margin-bottom:.5rem;">Assignment Submitted!</h2>
+    <p style="font-size:14px;color:var(--ink2);margin-bottom:1rem;">Your results have been saved (downloaded, or opened in a new tab if your browser doesn't support direct downloads — use Share / Print / Save As there). Please send that file to your teacher.</p>
+    <p style="font-size:13px;color:var(--ink3);">This page is now locked. You may close this tab.</p>
+  </div>
+</div>
+
+</div><!-- end .wrap -->
+
+<div class="sb" id="sb">
+  <div><div style="color:#3a5a78;font-size:10px;letter-spacing:.1em;">SCORE</div><div style="font-size:17px;font-weight:700;" id="sbv">0/0</div></div>
+  <div class="sb-tr"><div class="sb-f" id="sbf" style="width:0%"></div></div>
+  <div style="font-size:15px;font-weight:700;" id="sbp">0%</div>
+</div>
+
+<script>
+/* ── State ── */
+const OL=["A","B","C","D"];
+let att=0,cor=0,wrg=0;
+let infoLocked=false, submitted=false;
+
+/* ── Progress bar ── */
+function upd(){
+  document.getElementById('pa').textContent=att;
+  document.getElementById('pc').textContent=cor;
+  document.getElementById('pw').textContent=wrg;
+  const p=att>0?Math.round(cor/att*100):0;
+  document.getElementById('pp').textContent=att>0?p+'%':'—';
+  document.getElementById('sbv').textContent=cor+'/'+att;
+  document.getElementById('sbp').textContent=p+'%';
+  document.getElementById('sbf').style.width=p+'%';
+  document.getElementById('sb').classList.toggle('on',att>0);
+  checkSubmitReady();
+}
+function checkSubmitReady(){
+  const btn=document.getElementById('btn-final-submit');
+  if(!btn)return;
+  if(infoLocked){
+    btn.disabled=false;
+    btn.style.opacity='1';
+    btn.style.cursor='pointer';
+    document.querySelector('#submit-section p:last-child').style.display='none';
+  }
+}
+
+/* ── Lock student info ── */
+function lockStudentInfo(){
+  const name=document.getElementById('stu-name').value.trim();
+  const period=document.getElementById('stu-period').value.trim();
+  if(!name){alert('Please enter your name before locking.');return;}
+  if(!period){alert('Please enter your period/class before locking.');return;}
+  if(!document.getElementById('stu-date').value.trim()){
+    document.getElementById('stu-date').value=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+  }
+  document.querySelectorAll('#student-fields input').forEach(i=>{
+    i.disabled=true;
+    i.style.background='#f0f7ff';
+    i.style.color='var(--ink2)';
+    i.style.cursor='default';
+  });
+  document.getElementById('lock-row').style.display='none';
+  document.getElementById('locked-banner').style.display='block';
+  document.getElementById('stu-box-title').textContent='📋 Student Information (Locked)';
+  document.getElementById('student-box').style.borderColor='var(--c2)';
+  infoLocked=true;
+  checkSubmitReady();
+}
+
+/* ── Shuffle ── */
+function shuffle(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
+function shuffleOpts(q){const idx=shuffle([0,1,2,3]);return{...q,o:idx.map(i=>q.o[i]),a:idx.indexOf(q.a)};}
+
+/* ── SA answers ── */
+const saAnswers={};
+
+/* ── Questions data ── */
+const MC=[
+  {t:"A Lewis diagram for the molecule C₂H₄ is shown below (H₂C=CH₂). In the actual C₂H₄ molecule, the H–C–H bond angles are closest to:",fig:'<svg viewBox="0 0 228 118" width="228" height="118" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="60" x2="42" y2="32" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="60" x2="42" y2="88" stroke="#24313f" stroke-width="1.7" /><line x1="158" y1="60" x2="186" y2="32" stroke="#24313f" stroke-width="1.7" /><line x1="158" y1="60" x2="186" y2="88" stroke="#24313f" stroke-width="1.7" /><line x1="76.0" y1="56.0" x2="152.0" y2="56.0" stroke="#24313f" stroke-width="1.7" /><line x1="76.0" y1="60.0" x2="152.0" y2="60.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="60" r="10" fill="#fff"/><text x="70" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="158" cy="60" r="10" fill="#fff"/><text x="158" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="42" cy="32" r="8" fill="#fff"/><text x="42" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="42" cy="88" r="8" fill="#fff"/><text x="42" y="92.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="186" cy="32" r="8" fill="#fff"/><text x="186" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="186" cy="88" r="8" fill="#fff"/><text x="186" y="92.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text></svg>',o:["90°","109.5°","120°","180°"],a:2,e:"Each carbon in C₂H₄ has 3 electron domains (2 single bonds to H + 1 double bond to the other C, which counts as ONE domain). 3 domains → trigonal planar, sp², ideal angle 120°."},
+  {t:"Which of the following complete Lewis diagrams represents a molecule containing a bond angle that is closest to 120°?",fig:'<div class="chem-row"><div class="chem-box"><div class="chem-cap">A. CO₂</div><svg viewBox="0 0 140 80" width="140" height="80" class="" xmlns="http://www.w3.org/2000/svg"><line x1="30.0" y1="38.25" x2="55.0" y2="38.25" stroke="#24313f" stroke-width="1.7" /><line x1="30.0" y1="41.75" x2="55.0" y2="41.75" stroke="#24313f" stroke-width="1.7" /><line x1="85.0" y1="38.25" x2="110.0" y2="38.25" stroke="#24313f" stroke-width="1.7" /><line x1="85.0" y1="41.75" x2="110.0" y2="41.75" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="40" r="10" fill="#fff"/><text x="70" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="25" cy="40" r="10" fill="#fff"/><text x="25" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">O</text><circle cx="115" cy="40" r="10" fill="#fff"/><text x="115" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">O</text><circle cx="15.3" cy="31.7" r="1.6" fill="#24313f"/><circle cx="12.2" cy="40.1" r="1.6" fill="#24313f"/><circle cx="12.2" cy="39.9" r="1.6" fill="#24313f"/><circle cx="15.3" cy="48.3" r="1.6" fill="#24313f"/><circle cx="37.8" cy="40.1" r="1.6" fill="#24313f"/><circle cx="34.7" cy="31.7" r="1.6" fill="#24313f"/><circle cx="15.3" cy="31.7" r="1.6" fill="#24313f"/><circle cx="12.2" cy="40.1" r="1.6" fill="#24313f"/><circle cx="127.0" cy="44.5" r="1.6" fill="#24313f"/><circle cx="127.0" cy="35.5" r="1.6" fill="#24313f"/><circle cx="127.1" cy="35.7" r="1.6" fill="#24313f"/><circle cx="121.3" cy="28.8" r="1.6" fill="#24313f"/><circle cx="121.3" cy="51.2" r="1.6" fill="#24313f"/><circle cx="127.1" cy="44.3" r="1.6" fill="#24313f"/><circle cx="127.1" cy="35.7" r="1.6" fill="#24313f"/><circle cx="121.3" cy="28.8" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">B. CH₄</div><svg viewBox="0 0 140 90" width="140" height="90" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="45" x2="70" y2="15" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="45" x2="70" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="45" x2="40" y2="45" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="45" x2="100" y2="45" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="45" r="10" fill="#fff"/><text x="70" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="70" cy="15" r="8" fill="#fff"/><text x="70" y="19.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="70" cy="75" r="8" fill="#fff"/><text x="70" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="40" cy="45" r="8" fill="#fff"/><text x="40" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="100" cy="45" r="8" fill="#fff"/><text x="100" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text></svg></div><div class="chem-box"><div class="chem-cap">C. NH₃</div><svg viewBox="0 0 140 95" width="140" height="95" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="55" x2="70" y2="22" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="55" x2="42" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="55" x2="98" y2="75" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="55" r="10" fill="#fff"/><text x="70" y="59.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">N</text><circle cx="70" cy="22" r="8" fill="#fff"/><text x="70" y="26.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="42" cy="75" r="8" fill="#fff"/><text x="42" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="98" cy="75" r="8" fill="#fff"/><text x="98" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="74.5" cy="42.0" r="1.6" fill="#24313f"/><circle cx="65.5" cy="42.0" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">D. H₃C–C(=O)–OH fragment</div><svg viewBox="0 0 165 100" width="165" height="100" class="" xmlns="http://www.w3.org/2000/svg"><text x="28" y="64" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#24313f" >H₃C</text><line x1="48" y1="60" x2="78" y2="60" stroke="#24313f" stroke-width="1.7" /><line x1="82.25" y1="54.0" x2="82.25" y2="26.0" stroke="#24313f" stroke-width="1.7" /><line x1="85.75" y1="54.0" x2="85.75" y2="26.0" stroke="#24313f" stroke-width="1.7" /><line x1="90" y1="64" x2="116" y2="78" stroke="#24313f" stroke-width="1.7" /><line x1="122" y1="78" x2="138" y2="64" stroke="#24313f" stroke-width="1.7" /><circle cx="84" cy="60" r="10" fill="#fff"/><text x="84" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="84" cy="20" r="10" fill="#fff"/><text x="84" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">O</text><circle cx="122" cy="82" r="10" fill="#fff"/><text x="122" y="86.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">O</text><circle cx="140" cy="60" r="8" fill="#fff"/><text x="140" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="75.2" cy="12.0" r="1.6" fill="#24313f"/><circle cx="72.1" cy="20.5" r="1.6" fill="#24313f"/><circle cx="95.9" cy="20.5" r="1.6" fill="#24313f"/><circle cx="92.8" cy="12.0" r="1.6" fill="#24313f"/><circle cx="110.2" cy="83.6" r="1.6" fill="#24313f"/><circle cx="114.7" cy="91.4" r="1.6" fill="#24313f"/><circle cx="129.3" cy="91.4" r="1.6" fill="#24313f"/><circle cx="133.8" cy="83.6" r="1.6" fill="#24313f"/></svg></div></div>',o:["CO₂ (O=C=O, linear)","CH₄ (tetrahedral)","NH₃ (trigonal pyramidal)","A carboxylic-acid-type fragment, H₃C–C(=O)–OH"],a:3,e:"CO₂'s carbon has 2 domains (180°); CH₄'s carbon has 4 domains (109.5°); NH₃'s nitrogen has 4 domains with 1 lone pair (~107°). The carboxylic-acid carbon (bonded to =O, –OH, and –CH₃) has 3 domains → trigonal planar, 120°."},
+  {t:"Two resonance structures for an amino-acid-like fragment show the C–O bonds of a carboxylate group drawn once as (single, double) and once as (double, single). Based on these resonance structures, what are the bond orders of the two carbon–oxygen bonds?",fig:'<div class="chem-row"><svg viewBox="0 0 150 105" width="150" height="105" class="" xmlns="http://www.w3.org/2000/svg"><text x="20" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >H₂N</text><line x1="38" y1="50" x2="58" y2="60" stroke="#24313f" stroke-width="1.7" /><line x1="58" y1="60" x2="80" y2="50" stroke="#24313f" stroke-width="1.7" /><line x1="82.4" y1="44.0" x2="82.4" y2="18.0" stroke="#24313f" stroke-width="1.7" /><line x1="85.6" y1="44.0" x2="85.6" y2="18.0" stroke="#24313f" stroke-width="1.7" /><line x1="90" y1="64" x2="108" y2="80" stroke="#24313f" stroke-width="1.7" /><circle cx="58" cy="60" r="8" fill="#fff"/><text x="58" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="84" cy="50" r="8" fill="#fff"/><text x="84" y="54.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="84" cy="14" r="9" fill="#fff"/><text x="84" y="18.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="112" cy="84" r="9" fill="#fff"/><text x="112" y="88.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="75.2" cy="6.0" r="1.6" fill="#24313f"/><circle cx="72.1" cy="14.5" r="1.6" fill="#24313f"/><circle cx="95.9" cy="14.5" r="1.6" fill="#24313f"/><circle cx="92.8" cy="6.0" r="1.6" fill="#24313f"/><circle cx="100.2" cy="85.6" r="1.6" fill="#24313f"/><circle cx="104.7" cy="93.4" r="1.6" fill="#24313f"/><circle cx="113.6" cy="95.8" r="1.6" fill="#24313f"/><circle cx="121.4" cy="91.3" r="1.6" fill="#24313f"/><circle cx="120.8" cy="92.0" r="1.6" fill="#24313f"/><circle cx="123.9" cy="83.5" r="1.6" fill="#24313f"/><text x="126" y="90" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text></svg><svg viewBox="0 0 65 60" width="65" height="60" class="" xmlns="http://www.w3.org/2000/svg"><line x1="10" y1="50" x2="55" y2="50" stroke="#24313f" stroke-width="1.6"/><polygon points="10,50 19,46 19,54" fill="#24313f"/><polygon points="55,50 46,46 46,54" fill="#24313f"/></svg><svg viewBox="0 0 150 105" width="150" height="105" class="" xmlns="http://www.w3.org/2000/svg"><text x="20" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >H₂N</text><line x1="38" y1="50" x2="58" y2="60" stroke="#24313f" stroke-width="1.7" /><line x1="58" y1="60" x2="80" y2="50" stroke="#24313f" stroke-width="1.7" /><line x1="84" y1="44" x2="84" y2="18" stroke="#24313f" stroke-width="1.7" /><line x1="91.06298214212786" y1="62.80414509010615" x2="109.06298214212786" y2="78.80414509010615" stroke="#24313f" stroke-width="1.7" /><line x1="88.93701785787214" y1="65.19585490989385" x2="106.93701785787214" y2="81.19585490989385" stroke="#24313f" stroke-width="1.7" /><circle cx="58" cy="60" r="8" fill="#fff"/><text x="58" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="84" cy="50" r="8" fill="#fff"/><text x="84" y="54.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="84" cy="14" r="9" fill="#fff"/><text x="84" y="18.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="112" cy="84" r="9" fill="#fff"/><text x="112" y="88.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="75.2" cy="6.0" r="1.6" fill="#24313f"/><circle cx="72.1" cy="14.5" r="1.6" fill="#24313f"/><circle cx="95.9" cy="14.5" r="1.6" fill="#24313f"/><circle cx="92.8" cy="6.0" r="1.6" fill="#24313f"/><circle cx="79.5" cy="25.0" r="1.6" fill="#24313f"/><circle cx="88.5" cy="25.0" r="1.6" fill="#24313f"/><circle cx="100.2" cy="85.6" r="1.6" fill="#24313f"/><circle cx="104.7" cy="93.4" r="1.6" fill="#24313f"/><circle cx="120.8" cy="92.0" r="1.6" fill="#24313f"/><circle cx="123.9" cy="83.5" r="1.6" fill="#24313f"/><text x="98" y="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text></svg></div>',o:["1 and 1.5","1 and 2","1.5 and 1.5","2 and 2"],a:2,e:"Averaging one single (order 1) and one double (order 2) bond across the two equivalent resonance structures gives each C–O bond an identical bond order of (1+2)/2 = 1.5. Both bonds end up equal, not one long and one short."},
+  {t:"Reaction: C₂H₂(g) + Cl₂(g) → C₂H₂Cl₂(g). When this reaction occurs, does the hybridization of the carbon atoms change?",o:["Yes; it changes from sp to sp²","Yes; it changes from sp to sp³","Yes; it changes from sp² to sp³","No; it does not change"],a:0,e:"C₂H₂ (acetylene) has a C≡C triple bond — each carbon has 2 domains → sp. The product C₂H₂Cl₂ has a C=C double bond (each carbon: 2 single bonds + 1 double bond = 3 domains) → sp². So hybridization changes from sp to sp²."},
+  {t:"The molecular geometry and polarity of CO₂ and SO₂ are:",fig:'<div class="chem-row"><div class="chem-box"><div class="chem-cap">CO₂ — linear</div><svg viewBox="0 0 140 90" width="140" height="90" class="" xmlns="http://www.w3.org/2000/svg"><line x1="30.0" y1="43.4" x2="55.0" y2="43.4" stroke="#24313f" stroke-width="1.7" /><line x1="30.0" y1="46.6" x2="55.0" y2="46.6" stroke="#24313f" stroke-width="1.7" /><line x1="85.0" y1="43.4" x2="110.0" y2="43.4" stroke="#24313f" stroke-width="1.7" /><line x1="85.0" y1="46.6" x2="110.0" y2="46.6" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="45" r="10" fill="#fff"/><text x="70" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="25" cy="45" r="9" fill="#fff"/><text x="25" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="115" cy="45" r="9" fill="#fff"/><text x="115" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text></svg></div><div class="chem-box"><div class="chem-cap">SO₂ — bent</div><svg viewBox="0 0 140 95" width="140" height="95" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.87113495793969" y1="72.98775691180278" x2="40.87113495793968" y2="40.98775691180278" stroke="#24313f" stroke-width="1.7" /><line x1="71.12886504206031" y1="71.01224308819722" x2="43.12886504206032" y2="39.01224308819722" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="72" x2="98" y2="40" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="72" r="10" fill="#fff"/><text x="70" y="76.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">S</text><circle cx="38" cy="36" r="9" fill="#fff"/><text x="38" y="40.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="102" cy="36" r="9" fill="#fff"/><text x="102" y="40.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="65.5" cy="86.0" r="1.6" fill="#24313f"/><circle cx="74.5" cy="86.0" r="1.6" fill="#24313f"/></svg></div></div>',o:["the same because the molecular formulas are similar","the same because C and S have similar electronegativity values","different because the lone pair of electrons on the S atom makes it the negative end of a dipole","different because S has a greater number of electron domains (regions of electron density) surrounding it than C has"],a:3,e:"Carbon in CO₂ has 2 domains (both double bonds, no lone pairs) → linear, nonpolar. Sulfur in SO₂ has 3 domains (2 bonding regions + 1 lone pair) → bent, polar. The extra lone pair on S is the real reason the geometries — and therefore the polarities — differ."},
+  {t:"What is the O–S–O bond angle in sulfur trioxide, SO₃?",fig:'<svg viewBox="0 0 140 120" width="140" height="120" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.4" y1="70.0" x2="68.4" y2="30.0" stroke="#24313f" stroke-width="1.7" /><line x1="71.6" y1="70.0" x2="71.6" y2="30.0" stroke="#24313f" stroke-width="1.7" /><line x1="70.80165803286673" y1="71.3846820567698" x2="32.801658032866726" y2="93.3846820567698" stroke="#24313f" stroke-width="1.7" /><line x1="69.19834196713327" y1="68.6153179432302" x2="31.198341967133274" y2="90.6153179432302" stroke="#24313f" stroke-width="1.7" /><line x1="70.80165803286673" y1="68.6153179432302" x2="108.80165803286673" y2="90.6153179432302" stroke="#24313f" stroke-width="1.7" /><line x1="69.19834196713327" y1="71.3846820567698" x2="107.19834196713327" y2="93.3846820567698" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="70" r="10" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">S</text><circle cx="70" cy="20" r="9" fill="#fff"/><text x="70" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="24" cy="98" r="9" fill="#fff"/><text x="24" y="102.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="116" cy="98" r="9" fill="#fff"/><text x="116" y="102.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text></svg>',o:["90°","109.5°","120°","180°"],a:2,e:"S in SO₃ has 3 electron domains (3 S=O bonding regions, 0 lone pairs) → trigonal planar, ideal bond angle 120°."},
+  {t:"Which of the following Lewis diagrams represents a molecule that is polar?",fig:'<div class="chem-row"><div class="chem-box"><div class="chem-cap">A. CH₂Cl₂</div><svg viewBox="0 0 120 105" width="120" height="105" class="" xmlns="http://www.w3.org/2000/svg"><line x1="60" y1="55" x2="60" y2="25" stroke="#24313f" stroke-width="1.7" /><line x1="60" y1="55" x2="60" y2="85" stroke="#24313f" stroke-width="1.7" /><line x1="60" y1="55" x2="30" y2="40" stroke="#24313f" stroke-width="1.7" /><line x1="60" y1="55" x2="90" y2="40" stroke="#24313f" stroke-width="1.7" /><circle cx="60" cy="55" r="10" fill="#fff"/><text x="60" y="59.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="60" cy="20" r="8" fill="#fff"/><text x="60" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="60" cy="90" r="8" fill="#fff"/><text x="60" y="94.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12"  fill="#24313f">H</text><circle cx="24" cy="35" r="11" fill="#fff"/><text x="24" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="96" cy="35" r="11" fill="#fff"/><text x="96" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text></svg></div><div class="chem-box"><div class="chem-cap">B. CO₂</div><svg viewBox="0 0 120 80" width="120" height="80" class="" xmlns="http://www.w3.org/2000/svg"><line x1="20.0" y1="38.5" x2="45.0" y2="38.5" stroke="#24313f" stroke-width="1.7" /><line x1="20.0" y1="41.5" x2="45.0" y2="41.5" stroke="#24313f" stroke-width="1.7" /><line x1="75.0" y1="38.5" x2="100.0" y2="38.5" stroke="#24313f" stroke-width="1.7" /><line x1="75.0" y1="41.5" x2="100.0" y2="41.5" stroke="#24313f" stroke-width="1.7" /><circle cx="60" cy="40" r="10" fill="#fff"/><text x="60" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">C</text><circle cx="15" cy="40" r="9" fill="#fff"/><text x="15" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="105" cy="40" r="9" fill="#fff"/><text x="105" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text></svg></div><div class="chem-box"><div class="chem-cap">C. BF₃</div><svg viewBox="0 0 120 95" width="120" height="95" class="" xmlns="http://www.w3.org/2000/svg"><line x1="60" y1="55" x2="60" y2="25" stroke="#24313f" stroke-width="1.7" /><line x1="60" y1="55" x2="32" y2="72" stroke="#24313f" stroke-width="1.7" /><line x1="60" y1="55" x2="88" y2="72" stroke="#24313f" stroke-width="1.7" /><circle cx="60" cy="55" r="10" fill="#fff"/><text x="60" y="59.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">B</text><circle cx="60" cy="20" r="9" fill="#fff"/><text x="60" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">F</text><circle cx="26" cy="78" r="9" fill="#fff"/><text x="26" y="82.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">F</text><circle cx="94" cy="78" r="9" fill="#fff"/><text x="94" y="82.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">F</text></svg></div><div class="chem-box"><div class="chem-cap">D. N₂</div><svg viewBox="0 0 120 80" width="120" height="80" class="" xmlns="http://www.w3.org/2000/svg"><line x1="35.0" y1="36.8" x2="85.0" y2="36.8" stroke="#24313f" stroke-width="1.7" /><line x1="35.0" y1="40.0" x2="85.0" y2="40.0" stroke="#24313f" stroke-width="1.7" /><line x1="35.0" y1="43.2" x2="85.0" y2="43.2" stroke="#24313f" stroke-width="1.7" /><circle cx="25" cy="40" r="10" fill="#fff"/><text x="25" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">N</text><circle cx="95" cy="40" r="10" fill="#fff"/><text x="95" y="44.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">N</text><circle cx="13.0" cy="35.5" r="1.6" fill="#24313f"/><circle cx="13.0" cy="44.5" r="1.6" fill="#24313f"/><circle cx="107.0" cy="44.5" r="1.6" fill="#24313f"/><circle cx="107.0" cy="35.5" r="1.6" fill="#24313f"/></svg></div></div>',o:["BF₃ (trigonal planar, identical F's)","CO₂ (linear, identical O's)","CH₂Cl₂ (tetrahedral carbon with 2 H and 2 Cl)","N₂ (triple-bonded, identical N's)"],a:2,e:"BF₃, CO₂, and N₂ are all symmetric — their bond dipoles cancel exactly, so they're nonpolar. CH₂Cl₂ has two different substituents (H and Cl) arranged tetrahedrally around carbon; the bond dipoles do NOT cancel, so the molecule is polar."},
+  {t:"By considering the shape of the individual units that make up the macromolecule graphene (a flat sheet of fused hexagonal carbon rings), which type of hybridization is occurring in the carbon atoms of graphene?",fig:'<svg viewBox="0 0 260 175" width="260" height="175" class="" xmlns="http://www.w3.org/2000/svg"><line x1="82.51666049839541" y1="37.0" x2="82.51666049839541" y2="63.0" stroke="#24313f" stroke-width="1.4" /><line x1="82.51666049839541" y1="63.0" x2="60.0" y2="76.0" stroke="#24313f" stroke-width="1.4" /><line x1="60.0" y1="76.0" x2="37.48333950160459" y2="63.0" stroke="#24313f" stroke-width="1.4" /><line x1="37.48333950160459" y1="63.0" x2="37.4833395016046" y2="37.0" stroke="#24313f" stroke-width="1.4" /><line x1="37.4833395016046" y1="37.0" x2="59.99999999999999" y2="24.0" stroke="#24313f" stroke-width="1.4" /><line x1="59.99999999999999" y1="24.0" x2="82.51666049839541" y2="37.0" stroke="#24313f" stroke-width="1.4" /><line x1="127.5486604983954" y1="37.0" x2="127.5486604983954" y2="63.0" stroke="#24313f" stroke-width="1.4" /><line x1="127.5486604983954" y1="63.0" x2="105.032" y2="76.0" stroke="#24313f" stroke-width="1.4" /><line x1="105.032" y1="76.0" x2="82.51533950160459" y2="63.0" stroke="#24313f" stroke-width="1.4" /><line x1="82.51533950160459" y1="37.0" x2="105.032" y2="24.0" stroke="#24313f" stroke-width="1.4" /><line x1="105.032" y1="24.0" x2="127.5486604983954" y2="37.0" stroke="#24313f" stroke-width="1.4" /><line x1="105.0326604983954" y1="76.0" x2="105.0326604983954" y2="102.0" stroke="#24313f" stroke-width="1.4" /><line x1="105.0326604983954" y1="102.0" x2="82.51599999999999" y2="115.0" stroke="#24313f" stroke-width="1.4" /><line x1="82.51599999999999" y1="115.0" x2="59.99933950160458" y2="102.0" stroke="#24313f" stroke-width="1.4" /><line x1="59.99933950160458" y1="102.0" x2="59.99933950160459" y2="76.0" stroke="#24313f" stroke-width="1.4" /><line x1="60.000660498395405" y1="102.0" x2="37.484" y2="115.0" stroke="#24313f" stroke-width="1.4" /><line x1="37.484" y1="115.0" x2="14.967339501604595" y2="102.0" stroke="#24313f" stroke-width="1.4" /><line x1="14.967339501604595" y1="102.0" x2="14.967339501604599" y2="76.0" stroke="#24313f" stroke-width="1.4" /><line x1="14.967339501604599" y1="76.0" x2="37.483999999999995" y2="63.0" stroke="#24313f" stroke-width="1.4" /><line x1="150.0646604983954" y1="76.0" x2="150.0646604983954" y2="102.0" stroke="#24313f" stroke-width="1.4" /><line x1="150.0646604983954" y1="102.0" x2="127.548" y2="115.0" stroke="#24313f" stroke-width="1.4" /><line x1="127.548" y1="115.0" x2="105.03133950160459" y2="102.0" stroke="#24313f" stroke-width="1.4" /><line x1="127.548" y1="63.0" x2="150.0646604983954" y2="76.0" stroke="#24313f" stroke-width="1.4" /><circle cx="82.5" cy="37.0" r="3" fill="#24313f"/><circle cx="82.5" cy="63.0" r="3" fill="#24313f"/><circle cx="60.0" cy="76.0" r="3" fill="#24313f"/><circle cx="37.5" cy="63.0" r="3" fill="#24313f"/><circle cx="37.5" cy="37.0" r="3" fill="#24313f"/><circle cx="60.0" cy="24.0" r="3" fill="#24313f"/><circle cx="127.5" cy="37.0" r="3" fill="#24313f"/><circle cx="127.5" cy="63.0" r="3" fill="#24313f"/><circle cx="105.0" cy="76.0" r="3" fill="#24313f"/><circle cx="105.0" cy="24.0" r="3" fill="#24313f"/><circle cx="105.0" cy="102.0" r="3" fill="#24313f"/><circle cx="82.5" cy="115.0" r="3" fill="#24313f"/><circle cx="60.0" cy="102.0" r="3" fill="#24313f"/><circle cx="37.5" cy="115.0" r="3" fill="#24313f"/><circle cx="15.0" cy="102.0" r="3" fill="#24313f"/><circle cx="15.0" cy="76.0" r="3" fill="#24313f"/><circle cx="150.1" cy="76.0" r="3" fill="#24313f"/><circle cx="150.1" cy="102.0" r="3" fill="#24313f"/><circle cx="127.5" cy="115.0" r="3" fill="#24313f"/></svg>',o:["sp³d²","sp²","sp³d","sp³","sp"],a:1,e:"Each carbon in graphene is bonded to 3 other carbons in a flat, hexagonal (trigonal planar) arrangement — 3 electron domains, 0 lone pairs → sp², matching the same hybridization as benzene's carbons."},
+  {t:"Ethylene (C₂H₄) reacts with ozone (O₃) to form a 5-membered ring product (an ozonide) in which each original alkene carbon is now singly bonded to 2 H's, the other carbon, and a ring oxygen. What is the hybridization of the C atoms before and after this reaction?",fig:'<svg viewBox="0 0 420 130" width="420" height="130" class="" xmlns="http://www.w3.org/2000/svg"><line x1="30" y1="60" x2="10" y2="35" stroke="#24313f" stroke-width="1.7" /><line x1="30" y1="60" x2="10" y2="85" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="60" x2="90" y2="35" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="60" x2="90" y2="85" stroke="#24313f" stroke-width="1.7" /><line x1="36.0" y1="56.5" x2="64.0" y2="56.5" stroke="#24313f" stroke-width="1.7" /><line x1="36.0" y1="59.5" x2="64.0" y2="59.5" stroke="#24313f" stroke-width="1.7" /><circle cx="30" cy="60" r="8" fill="#fff"/><text x="30" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="70" cy="60" r="8" fill="#fff"/><text x="70" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="10" cy="35" r="7" fill="#fff"/><text x="10" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="10" cy="85" r="7" fill="#fff"/><text x="10" y="89.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="90" cy="35" r="7" fill="#fff"/><text x="90" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="90" cy="85" r="7" fill="#fff"/><text x="90" y="89.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><text x="50" y="15" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >H₂C=CH₂</text><text x="115" y="62" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#24313f" >+</text><line x1="140" y1="72" x2="163" y2="45" stroke="#24313f" stroke-width="1.7" /><line x1="163.55665041268801" y1="43.7154221245661" x2="193.55665041268801" y2="56.7154221245661" stroke="#24313f" stroke-width="1.7" /><line x1="162.44334958731199" y1="46.2845778754339" x2="192.44334958731199" y2="59.2845778754339" stroke="#24313f" stroke-width="1.7" /><circle cx="140" cy="72" r="8" fill="#fff"/><text x="140" y="76.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="163" cy="45" r="8" fill="#fff"/><text x="163" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="193" cy="58" r="8" fill="#fff"/><text x="193" y="62.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="158.5" cy="56.0" r="1.6" fill="#24313f"/><circle cx="167.5" cy="56.0" r="1.6" fill="#24313f"/><text x="163" y="25" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >O₃</text><line x1="200" y1="60" x2="235" y2="60" stroke="#24313f" stroke-width="1.8"/><polygon points="235,60 226,55.5 226,64.5" fill="#24313f"/><line x1="300" y1="50" x2="340" y2="50" stroke="#24313f" stroke-width="1.7" /><line x1="340" y1="50" x2="355" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="355" y1="75" x2="325" y2="90" stroke="#24313f" stroke-width="1.7" /><line x1="325" y1="90" x2="285" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="285" y1="75" x2="300" y2="50" stroke="#24313f" stroke-width="1.7" /><circle cx="300" cy="50" r="8" fill="#fff"/><text x="300" y="54.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="340" cy="50" r="8" fill="#fff"/><text x="340" y="54.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="355" cy="75" r="8" fill="#fff"/><text x="355" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="325" cy="90" r="8" fill="#fff"/><text x="325" y="94.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="285" cy="75" r="8" fill="#fff"/><text x="285" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="300" y1="50" x2="285" y2="32" stroke="#24313f" stroke-width="1.7" /><line x1="300" y1="50" x2="270" y2="60" stroke="#24313f" stroke-width="1.7" /><line x1="340" y1="50" x2="355" y2="32" stroke="#24313f" stroke-width="1.7" /><line x1="340" y1="50" x2="370" y2="60" stroke="#24313f" stroke-width="1.7" /><circle cx="285" cy="32" r="7" fill="#fff"/><text x="285" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="270" cy="60" r="7" fill="#fff"/><text x="270" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="355" cy="32" r="7" fill="#fff"/><text x="355" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="370" cy="60" r="7" fill="#fff"/><text x="370" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><text x="320" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080" >ozonide (5-membered ring)</text></svg>',o:["Before: sp — After: sp²","Before: sp — After: sp³","Before: sp³ — After: sp","Before: sp² — After: sp³"],a:3,e:"Before the reaction, each alkene carbon has 3 domains (2 single bonds to H + 1 C=C double bond) → sp². After the reaction, each carbon has 4 domains, all single bonds (2 H, 1 C, 1 O) → sp³."},
+  {t:"The structural formula of the glycinium cation, [H₃N–CH₂–COOH]⁺, is shown with its carboxylic acid group drawn out in full. Which of the following is true about the geometry of this ion?",fig:'<svg viewBox="0 0 300 155" width="300" height="155" class="" xmlns="http://www.w3.org/2000/svg"><line x1="45" y1="75" x2="95" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="75" x2="145" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="143.4" y1="75.0" x2="143.4" y2="32.0" stroke="#24313f" stroke-width="1.7" /><line x1="146.6" y1="75.0" x2="146.6" y2="32.0" stroke="#24313f" stroke-width="1.7" /><line x1="145" y1="75" x2="193" y2="100" stroke="#24313f" stroke-width="1.7" /><line x1="193" y1="100" x2="227" y2="78" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="45" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="13" y2="97" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="51" y2="115" stroke="#24313f" stroke-width="1.7" /><circle cx="45" cy="37" r="7" fill="#fff"/><text x="45" y="41.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="13" cy="97" r="7" fill="#fff"/><text x="13" y="101.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="51" cy="115" r="7" fill="#fff"/><text x="51" y="119.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><line x1="95" y1="75" x2="85" y2="41" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="75" x2="105" y2="109" stroke="#24313f" stroke-width="1.7" /><circle cx="85" cy="41" r="7" fill="#fff"/><text x="85" y="45.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="105" cy="109" r="7" fill="#fff"/><text x="105" y="113.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="227" cy="78" r="7" fill="#fff"/><text x="227" y="82.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="45" cy="75" r="9" fill="#fff"/><text x="45" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text><circle cx="95" cy="75" r="8" fill="#fff"/><text x="95" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="145" cy="75" r="8" fill="#fff"/><text x="145" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="145" cy="32" r="9" fill="#fff"/><text x="145" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="193" cy="100" r="9" fill="#fff"/><text x="193" y="104.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="136.2" cy="24.0" r="1.6" fill="#24313f"/><circle cx="133.1" cy="32.5" r="1.6" fill="#24313f"/><circle cx="156.9" cy="32.5" r="1.6" fill="#24313f"/><circle cx="153.8" cy="24.0" r="1.6" fill="#24313f"/><circle cx="194.6" cy="111.8" r="1.6" fill="#24313f"/><circle cx="202.4" cy="107.3" r="1.6" fill="#24313f"/><circle cx="181.2" cy="101.6" r="1.6" fill="#24313f"/><circle cx="185.7" cy="109.4" r="1.6" fill="#24313f"/><text x="54" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">+</text><text x="19" y="25" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080">pKₐ = 9.6</text><line x1="29" y1="31" x2="42" y2="36" stroke="#4a6080" stroke-width="1.2" stroke-dasharray="2,2"/><text x="235" y="46" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080" >pKₐ = 2.3</text><line x1="229" y1="54" x2="227" y2="66" stroke="#4a6080" stroke-width="1.2" stroke-dasharray="2,2"/></svg>',o:["The leftmost (N) atom and all atoms bonded to it lie in the same plane","Both carbon atoms and both oxygen atoms lie in the same plane","The N–C–C bond angle is 180°","The geometry around the N atom is planar"],a:1,e:"The carboxylic-acid carbon is sp² (3 domains: =O, –OH, –CH₂–) and therefore trigonal planar, which forces that carbon, its double-bonded O, its single-bonded O, and the adjacent CH₂ carbon all into one plane. The N atom, however, is sp³ (4 single bonds, tetrahedral) — not planar, and the N–C–C angle is close to 109.5°, not 180°."},
+  {t:"In the glycinium cation's –C(=O)–O–H group, what is the approximate H–O–C bond angle?",fig:'<svg viewBox="0 0 300 155" width="300" height="155" class="" xmlns="http://www.w3.org/2000/svg"><line x1="45" y1="75" x2="95" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="75" x2="145" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="143.4" y1="75.0" x2="143.4" y2="32.0" stroke="#24313f" stroke-width="1.7" /><line x1="146.6" y1="75.0" x2="146.6" y2="32.0" stroke="#24313f" stroke-width="1.7" /><line x1="145" y1="75" x2="193" y2="100" stroke="#24313f" stroke-width="1.7" /><line x1="193" y1="100" x2="227" y2="78" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="45" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="13" y2="97" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="51" y2="115" stroke="#24313f" stroke-width="1.7" /><circle cx="45" cy="37" r="7" fill="#fff"/><text x="45" y="41.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="13" cy="97" r="7" fill="#fff"/><text x="13" y="101.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="51" cy="115" r="7" fill="#fff"/><text x="51" y="119.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><line x1="95" y1="75" x2="85" y2="41" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="75" x2="105" y2="109" stroke="#24313f" stroke-width="1.7" /><circle cx="85" cy="41" r="7" fill="#fff"/><text x="85" y="45.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="105" cy="109" r="7" fill="#fff"/><text x="105" y="113.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="227" cy="78" r="7" fill="#fff"/><text x="227" y="82.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="45" cy="75" r="9" fill="#fff"/><text x="45" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text><circle cx="95" cy="75" r="8" fill="#fff"/><text x="95" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="145" cy="75" r="8" fill="#fff"/><text x="145" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="145" cy="32" r="9" fill="#fff"/><text x="145" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="193" cy="100" r="9" fill="#fff"/><text x="193" y="104.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="136.2" cy="24.0" r="1.6" fill="#24313f"/><circle cx="133.1" cy="32.5" r="1.6" fill="#24313f"/><circle cx="156.9" cy="32.5" r="1.6" fill="#24313f"/><circle cx="153.8" cy="24.0" r="1.6" fill="#24313f"/><circle cx="194.6" cy="111.8" r="1.6" fill="#24313f"/><circle cx="202.4" cy="107.3" r="1.6" fill="#24313f"/><circle cx="181.2" cy="101.6" r="1.6" fill="#24313f"/><circle cx="185.7" cy="109.4" r="1.6" fill="#24313f"/><text x="54" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">+</text><text x="19" y="25" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080">pKₐ = 9.6</text><line x1="29" y1="31" x2="42" y2="36" stroke="#4a6080" stroke-width="1.2" stroke-dasharray="2,2"/><text x="235" y="46" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080" >pKₐ = 2.3</text><line x1="229" y1="54" x2="227" y2="66" stroke="#4a6080" stroke-width="1.2" stroke-dasharray="2,2"/></svg>',o:["180°","120°","105°","90°"],a:2,e:"The hydroxyl oxygen in –COOH has 4 electron domains (bonds to C and H, plus 2 lone pairs) → tetrahedral electron-domain geometry, giving a bent H–O–C angle. Two lone pairs compress the angle below 109.5°, to roughly 105°."},
+  {t:"Lewis (resonance) diagrams for the nitrate and nitrite ions show that each N–O bond in nitrate has bond order 1.33, while each N–O bond in nitrite has bond order 1.5. Choose the statement that correctly describes the relationship between the two ions in terms of bond length and bond energy.",fig:'<div class="chem-row" style="align-items:flex-start;gap:28px;"><div><div class="chem-row"><svg viewBox="0 0 140 150" width="140" height="150" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.5" y1="70.0" x2="68.5" y2="20.0" stroke="#24313f" stroke-width="1.7" /><line x1="71.5" y1="70.0" x2="71.5" y2="20.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70.0" cy="20.0" r="9" fill="#fff"/><text x="70.0" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="70" y1="70" x2="26.69872981077807" y2="95.0" stroke="#24313f" stroke-width="1.7" /><circle cx="26.69872981077807" cy="95.0" r="9" fill="#fff"/><text x="26.69872981077807" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="38.69872981077807" y="87.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70" y1="70" x2="113.30127018922192" y2="95.00000000000003" stroke="#24313f" stroke-width="1.7" /><circle cx="113.30127018922192" cy="95.00000000000003" r="9" fill="#fff"/><text x="113.30127018922192" y="99.50000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="125.30127018922192" y="87.00000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><circle cx="70" cy="70" r="8" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg><svg viewBox="0 0 42 40" width="42" height="40" class="" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="20" x2="34" y2="20" stroke="#24313f" stroke-width="1.6"/><polygon points="6,20 15,16 15,24" fill="#24313f"/><polygon points="34,20 25,16 25,24" fill="#24313f"/></svg><svg viewBox="0 0 140 150" width="140" height="150" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="70" x2="70.0" y2="20.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70.0" cy="20.0" r="9" fill="#fff"/><text x="70.0" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="82.0" y="12.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70.75" y1="71.29903810567666" x2="27.44872981077807" y2="96.29903810567666" stroke="#24313f" stroke-width="1.7" /><line x1="69.25" y1="68.70096189432334" x2="25.94872981077807" y2="93.70096189432334" stroke="#24313f" stroke-width="1.7" /><circle cx="26.69872981077807" cy="95.0" r="9" fill="#fff"/><text x="26.69872981077807" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="70" y1="70" x2="113.30127018922192" y2="95.00000000000003" stroke="#24313f" stroke-width="1.7" /><circle cx="113.30127018922192" cy="95.00000000000003" r="9" fill="#fff"/><text x="113.30127018922192" y="99.50000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="125.30127018922192" y="87.00000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><circle cx="70" cy="70" r="8" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg><svg viewBox="0 0 42 40" width="42" height="40" class="" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="20" x2="34" y2="20" stroke="#24313f" stroke-width="1.6"/><polygon points="6,20 15,16 15,24" fill="#24313f"/><polygon points="34,20 25,16 25,24" fill="#24313f"/></svg><svg viewBox="0 0 140 150" width="140" height="150" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="70" x2="70.0" y2="20.0" stroke="#24313f" stroke-width="1.7" /><circle cx="70.0" cy="20.0" r="9" fill="#fff"/><text x="70.0" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="82.0" y="12.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70" y1="70" x2="26.69872981077807" y2="95.0" stroke="#24313f" stroke-width="1.7" /><circle cx="26.69872981077807" cy="95.0" r="9" fill="#fff"/><text x="26.69872981077807" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="38.69872981077807" y="87.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="70.75" y1="68.70096189432334" x2="114.05127018922192" y2="93.70096189432337" stroke="#24313f" stroke-width="1.7" /><line x1="69.25" y1="71.29903810567666" x2="112.55127018922192" y2="96.29903810567669" stroke="#24313f" stroke-width="1.7" /><circle cx="113.30127018922192" cy="95.00000000000003" r="9" fill="#fff"/><text x="113.30127018922192" y="99.50000000000003" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="70" cy="70" r="8" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg></div><div class="chem-cap" style="text-align:center;margin-top:-6px;">Nitrate, NO₃⁻ (3 resonance structures)</div></div><div><div class="chem-row"><svg viewBox="0 0 140 110" width="140" height="110" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.87888602197451" y1="80.99654575824488" x2="28.87888602197451" y2="35.99654575824488" stroke="#24313f" stroke-width="1.7" /><line x1="71.12111397802549" y1="79.00345424175512" x2="31.12111397802549" y2="34.00345424175512" stroke="#24313f" stroke-width="1.7" /><circle cx="30" cy="35" r="9" fill="#fff"/><text x="30" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><line x1="70" y1="80" x2="110" y2="35" stroke="#24313f" stroke-width="1.7" /><circle cx="110" cy="35" r="9" fill="#fff"/><text x="110" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="122" y="27" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><circle cx="65.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="74.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="70" cy="80" r="8" fill="#fff"/><text x="70" y="84.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg><svg viewBox="0 0 42 40" width="42" height="40" class="" xmlns="http://www.w3.org/2000/svg"><line x1="6" y1="20" x2="34" y2="20" stroke="#24313f" stroke-width="1.6"/><polygon points="6,20 15,16 15,24" fill="#24313f"/><polygon points="34,20 25,16 25,24" fill="#24313f"/></svg><svg viewBox="0 0 140 110" width="140" height="110" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="80" x2="30" y2="35" stroke="#24313f" stroke-width="1.7" /><circle cx="30" cy="35" r="9" fill="#fff"/><text x="30" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><text x="18" y="27" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text><line x1="68.87888602197451" y1="79.00345424175512" x2="108.87888602197451" y2="34.00345424175512" stroke="#24313f" stroke-width="1.7" /><line x1="71.12111397802549" y1="80.99654575824488" x2="111.12111397802549" y2="35.99654575824488" stroke="#24313f" stroke-width="1.7" /><circle cx="110" cy="35" r="9" fill="#fff"/><text x="110" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">O</text><circle cx="65.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="74.5" cy="94.0" r="1.6" fill="#24313f"/><circle cx="70" cy="80" r="8" fill="#fff"/><text x="70" y="84.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text></svg></div><div class="chem-cap" style="text-align:center;margin-top:-6px;">Nitrite, NO₂⁻ (2 resonance structures)</div></div></div>',o:["Nitrite has longer and stronger bonds than nitrate","Nitrite has longer and weaker bonds than nitrate","Nitrite has shorter and stronger bonds than nitrate","Nitrite has shorter and weaker bonds than nitrate"],a:2,e:"Nitrite's bond order (1.5) is higher than nitrate's (1.33). A higher bond order means a shorter, stronger bond — so nitrite's N–O bonds are both shorter AND stronger than nitrate's."},
+];
+
+const SA=[
+  {q:"1. (a) Explain why BrF₄⁻ is square planar, whereas BF₄⁻ is tetrahedral. (b) How would you expect the H–X–H bond angle to vary in the series H₂O, H₂S, H₂Se? Explain. (Hint: the size of an electron-pair domain depends in part on the electronegativity and size of the central atom.)",fig:'<div style="margin-bottom:10px;"><div class="chem-row"><div class="chem-box"><div class="chem-cap">BrF₄⁻ — square planar</div><svg viewBox="0 0 145 145" width="145" height="145" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="70" x2="25" y2="70" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="115" y2="70" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="70" y2="25" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="70" y2="115" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="70" r="11" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">Br</text><circle cx="20" cy="70" r="9" fill="#fff"/><text x="20" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="120" cy="70" r="9" fill="#fff"/><text x="120" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="70" cy="20" r="9" fill="#fff"/><text x="70" y="24.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="70" cy="120" r="9" fill="#fff"/><text x="70" y="124.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="78.1" cy="84.5" r="1.6" fill="#24313f"/><circle cx="84.5" cy="78.1" r="1.6" fill="#24313f"/><circle cx="61.9" cy="55.5" r="1.6" fill="#24313f"/><circle cx="55.5" cy="61.9" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">BF₄⁻ — tetrahedral</div><svg viewBox="0 0 130 130" width="130" height="130" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65" y1="58" x2="65" y2="16" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="58" x2="27" y2="76" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="58" x2="103" y2="76" stroke="#24313f" stroke-width="1.7" /><circle cx="65" cy="58" r="10" fill="#fff"/><text x="65" y="62.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">B</text><circle cx="65" cy="16" r="9" fill="#fff"/><text x="65" y="20.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="27" cy="76" r="9" fill="#fff"/><text x="27" y="80.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="103" cy="76" r="9" fill="#fff"/><text x="103" y="80.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><polygon points="63.5,61 66.5,61 70,98 60,98" fill="#24313f"/><circle cx="65" cy="104" r="9" fill="#fff"/><text x="65" y="108.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text></svg></div></div></div><div><div class="chem-row"><div class="chem-box"><div class="chem-cap">H₂O</div><svg viewBox="0 0 130 120" width="130" height="120" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65" y1="70" x2="31.903548348517674" y2="44.14221803632235" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="70" x2="98.09645165148233" y2="44.14221803632235" stroke="#24313f" stroke-width="1.7" /><circle cx="65" cy="70" r="10" fill="#fff"/><text x="65" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="31.903548348517674" cy="44.14221803632235" r="7" fill="#fff"/><text x="31.903548348517674" y="48.64221803632235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="98.09645165148233" cy="44.14221803632235" r="7" fill="#fff"/><text x="98.09645165148233" y="48.64221803632235" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="60.5" cy="85.0" r="1.6" fill="#24313f"/><circle cx="69.5" cy="85.0" r="1.6" fill="#24313f"/><text x="65" y="105" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080" >~104°</text></svg></div><div class="chem-box"><div class="chem-cap">H₂S</div><svg viewBox="0 0 130 120" width="130" height="120" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65" y1="70" x2="34.78772838577665" y2="40.82434844072212" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="70" x2="95.21227161422334" y2="40.82434844072212" stroke="#24313f" stroke-width="1.7" /><circle cx="65" cy="70" r="10" fill="#fff"/><text x="65" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">S</text><circle cx="34.78772838577665" cy="40.82434844072212" r="7" fill="#fff"/><text x="34.78772838577665" y="45.32434844072212" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="95.21227161422334" cy="40.82434844072212" r="7" fill="#fff"/><text x="95.21227161422334" y="45.32434844072212" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="60.5" cy="85.0" r="1.6" fill="#24313f"/><circle cx="69.5" cy="85.0" r="1.6" fill="#24313f"/><text x="65" y="105" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080" >~92°</text></svg></div><div class="chem-box"><div class="chem-cap">H₂Se</div><svg viewBox="0 0 130 120" width="130" height="120" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65" y1="70" x2="35.043481135524374" y2="40.56181089940626" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="70" x2="94.95651886447563" y2="40.56181089940626" stroke="#24313f" stroke-width="1.7" /><circle cx="65" cy="70" r="10" fill="#fff"/><text x="65" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">Se</text><circle cx="35.043481135524374" cy="40.56181089940626" r="7" fill="#fff"/><text x="35.043481135524374" y="45.06181089940626" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="94.95651886447563" cy="40.56181089940626" r="7" fill="#fff"/><text x="94.95651886447563" y="45.06181089940626" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="60.5" cy="85.0" r="1.6" fill="#24313f"/><circle cx="69.5" cy="85.0" r="1.6" fill="#24313f"/><text x="65" y="105" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10.5" fill="#4a6080" >~91°</text></svg></div></div></div>',
+   a:"(a) In BrF₄⁻, Br has 4 bonding pairs PLUS 2 lone pairs (6 total electron domains) → octahedral electron-domain geometry; with the 2 lone pairs positioned opposite each other, the molecular shape is square planar. In BF₄⁻, boron (period 2, strictly obeys the octet rule, no available d-orbitals) has only 4 bonding pairs and 0 lone pairs (4 domains) → tetrahedral electron-domain AND molecular geometry, since there are no lone pairs to remove.\n(b) All three (H₂O, H₂S, H₂Se) have 4 electron domains (2 bonding + 2 lone pairs) → bent shape, but the H–X–H angle DECREASES going down the group: H₂O (~104.5°) > H₂S (~92°) > H₂Se (~91°). The central atom gets larger and less electronegative down the group, so its bonding electron pairs are held farther away and less tightly, letting the angle relax closer to 90°."},
+  {q:"2. Predict whether each of these molecules is polar or nonpolar: (a) BrCl, (b) SO₂, (c) SF₆.",fig:'<div class="chem-row"><div class="chem-box"><div class="chem-cap">BrCl</div><svg viewBox="0 0 120 90" width="120" height="90" class="" xmlns="http://www.w3.org/2000/svg"><line x1="25" y1="45" x2="95" y2="45" stroke="#24313f" stroke-width="1.7" /><circle cx="20" cy="45" r="11" fill="#fff"/><text x="20" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Br</text><circle cx="100" cy="45" r="10" fill="#fff"/><text x="100" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="87.6" cy="51.0" r="1.6" fill="#24313f"/><circle cx="94.0" cy="57.4" r="1.6" fill="#24313f"/><circle cx="95.5" cy="58.0" r="1.6" fill="#24313f"/><circle cx="104.5" cy="58.0" r="1.6" fill="#24313f"/><circle cx="106.0" cy="57.4" r="1.6" fill="#24313f"/><circle cx="112.4" cy="51.0" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">SO₂</div><svg viewBox="0 0 140 95" width="140" height="95" class="" xmlns="http://www.w3.org/2000/svg"><line x1="68.87113495793969" y1="72.98775691180278" x2="40.87113495793968" y2="40.98775691180278" stroke="#24313f" stroke-width="1.7" /><line x1="71.12886504206031" y1="71.01224308819722" x2="43.12886504206032" y2="39.01224308819722" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="72" x2="98" y2="40" stroke="#24313f" stroke-width="1.7" /><circle cx="70" cy="72" r="10" fill="#fff"/><text x="70" y="76.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#24313f">S</text><circle cx="38" cy="36" r="9" fill="#fff"/><text x="38" y="40.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="102" cy="36" r="9" fill="#fff"/><text x="102" y="40.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="65.5" cy="86.0" r="1.6" fill="#24313f"/><circle cx="74.5" cy="86.0" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">SF₆</div><svg viewBox="0 0 145 145" width="145" height="145" class="" xmlns="http://www.w3.org/2000/svg"><line x1="70" y1="70" x2="70" y2="24" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="70" y2="116" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="24" y2="70" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="116" y2="70" stroke="#24313f" stroke-width="1.7" /><line x1="70" y1="70" x2="50" y2="50" stroke="#24313f" stroke-width="1.7" stroke-dasharray="2,2"/><line x1="70" y1="70" x2="90" y2="90" stroke="#24313f" stroke-width="1.7" stroke-dasharray="2,2"/><circle cx="70" cy="70" r="10" fill="#fff"/><text x="70" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">S</text><circle cx="70" cy="24" r="9" fill="#fff"/><text x="70" y="28.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="70" cy="116" r="9" fill="#fff"/><text x="70" y="120.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="24" cy="70" r="9" fill="#fff"/><text x="24" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="116" cy="70" r="9" fill="#fff"/><text x="116" y="74.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">F</text><circle cx="46" cy="46" r="9" fill="#fff"/><text x="46" y="50.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">F</text><circle cx="94" cy="94" r="9" fill="#fff"/><text x="94" y="98.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">F</text></svg></div></div>',
+   a:"(a) BrCl: a linear diatomic molecule of two different elements with different electronegativities → the bond dipole doesn't cancel with anything → polar.\n(b) SO₂: sulfur has 3 electron domains (2 S=O bonding regions + 1 lone pair) → bent shape; the two bond dipoles don't point in opposite directions → polar.\n(c) SF₆: sulfur has 6 bonding domains and 0 lone pairs → perfectly symmetric octahedral shape; all six S–F bond dipoles cancel exactly → nonpolar."},
+  {q:"3. Dichloroethylene (C₂H₂Cl₂) has three forms (isomers), each a different substance, all with a carbon–carbon double bond. (a) Describe the three isomers. (b) Which of these isomers has a zero dipole moment? (c) How many isomeric forms can chloroethylene, C₂H₃Cl, have? Would it be expected to have a dipole moment?",fig:'<div class="chem-row"><svg viewBox="0 0 140 122" width="140" height="122" class="" xmlns="http://www.w3.org/2000/svg"><line x1="45" y1="68" x2="95" y2="68" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="62" x2="95" y2="62" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="65" x2="15" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="65" x2="15" y2="93" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="65" x2="125" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="65" x2="125" y2="93" stroke="#24313f" stroke-width="1.7" /><circle cx="45" cy="65" r="8" fill="#fff"/><text x="45" y="69.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">C</text><circle cx="95" cy="65" r="8" fill="#fff"/><text x="95" y="69.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">C</text><circle cx="11" cy="35" r="10" fill="#fff"/><text x="11" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="11" cy="95" r="7" fill="#fff"/><text x="11" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="129" cy="35" r="10" fill="#fff"/><text x="129" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="129" cy="95" r="7" fill="#fff"/><text x="129" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><text x="70" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >cis-1,2-</text></svg><svg viewBox="0 0 140 122" width="140" height="122" class="" xmlns="http://www.w3.org/2000/svg"><line x1="45" y1="68" x2="95" y2="68" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="62" x2="95" y2="62" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="65" x2="15" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="65" x2="15" y2="93" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="65" x2="125" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="65" x2="125" y2="93" stroke="#24313f" stroke-width="1.7" /><circle cx="45" cy="65" r="8" fill="#fff"/><text x="45" y="69.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">C</text><circle cx="95" cy="65" r="8" fill="#fff"/><text x="95" y="69.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">C</text><circle cx="11" cy="35" r="10" fill="#fff"/><text x="11" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="11" cy="95" r="7" fill="#fff"/><text x="11" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="129" cy="35" r="7" fill="#fff"/><text x="129" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="129" cy="95" r="10" fill="#fff"/><text x="129" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><text x="70" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >trans-1,2-</text></svg><svg viewBox="0 0 140 122" width="140" height="122" class="" xmlns="http://www.w3.org/2000/svg"><line x1="45" y1="68" x2="95" y2="68" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="62" x2="95" y2="62" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="65" x2="15" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="65" x2="15" y2="93" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="65" x2="125" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="65" x2="125" y2="93" stroke="#24313f" stroke-width="1.7" /><circle cx="45" cy="65" r="8" fill="#fff"/><text x="45" y="69.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">C</text><circle cx="95" cy="65" r="8" fill="#fff"/><text x="95" y="69.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">C</text><circle cx="11" cy="35" r="10" fill="#fff"/><text x="11" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="11" cy="95" r="10" fill="#fff"/><text x="11" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Cl</text><circle cx="129" cy="35" r="7" fill="#fff"/><text x="129" y="39.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="129" cy="95" r="7" fill="#fff"/><text x="129" y="99.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><text x="70" y="110" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >1,1-</text></svg></div>',
+   a:"(a) cis-1,2-dichloroethylene (both Cl on the same side of the C=C bond), trans-1,2-dichloroethylene (Cl atoms on opposite sides), and 1,1-dichloroethylene (both Cl atoms on the same carbon).\n(b) trans-1,2-dichloroethylene has a zero dipole moment — its two C–Cl bond dipoles point in opposite directions and cancel exactly by the molecule's symmetry. The cis and 1,1- isomers are both polar.\n(c) Chloroethylene (C₂H₃Cl) can only exist as ONE form — no cis/trans isomers are possible, because the carbon not bearing Cl carries two identical H atoms (swapping positions on that carbon doesn't create a new, distinct molecule). This single form does have a nonzero dipole moment, since nothing cancels the C–Cl bond dipole."},
+  {q:"4. Dihydroxybenzene, C₆H₄(OH)₂, exists in three isomers: ortho, meta, and para (named for the relative positions of the two OH groups on the ring). Which of these has a nonzero dipole moment?",fig:'<div class="chem-row"><svg viewBox="0 0 130 132" width="130" height="132" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65.65" y1="32.12583302491977" x2="36.20513627132908" y2="49.12583302491977" stroke="#24313f" stroke-width="1.7" /><line x1="64.35" y1="29.87416697508023" x2="34.905136271329084" y2="46.87416697508023" stroke="#24313f" stroke-width="1.7" /><line x1="35.55513627132908" y1="48.0" x2="35.55513627132909" y2="82.0" stroke="#24313f" stroke-width="1.7" /><line x1="36.20513627132909" y1="80.87416697508023" x2="65.65" y2="97.87416697508023" stroke="#24313f" stroke-width="1.7" /><line x1="34.90513627132909" y1="83.12583302491977" x2="64.35" y2="100.12583302491977" stroke="#24313f" stroke-width="1.7" /><line x1="65.0" y1="99.0" x2="94.4448637286709" y2="82.00000000000001" stroke="#24313f" stroke-width="1.7" /><line x1="93.1448637286709" y1="82.00000000000001" x2="93.14486372867091" y2="48.0" stroke="#24313f" stroke-width="1.7" /><line x1="95.7448637286709" y1="82.00000000000001" x2="95.74486372867091" y2="48.0" stroke="#24313f" stroke-width="1.7" /><line x1="94.44486372867091" y1="48.0" x2="65.0" y2="31.0" stroke="#24313f" stroke-width="1.7" /><line x1="65.0" y1="31.0" x2="65.0" y2="5.0" stroke="#24313f" stroke-width="1.7" /><text x="79.0" y="9.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#24313f" >OH</text><circle cx="21.7" cy="40.0" r="1.6" fill="#4a6080"/><circle cx="21.7" cy="90.0" r="1.6" fill="#4a6080"/><line x1="65.0" y1="99.0" x2="65.0" y2="125.0" stroke="#24313f" stroke-width="1.7" /><text x="79.0" y="129.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#24313f" >OH</text><circle cx="108.3" cy="90.0" r="1.6" fill="#4a6080"/><circle cx="108.3" cy="40.0" r="1.6" fill="#4a6080"/><text x="65" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >para</text></svg><svg viewBox="0 0 130 132" width="130" height="132" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65.65" y1="32.12583302491977" x2="36.20513627132908" y2="49.12583302491977" stroke="#24313f" stroke-width="1.7" /><line x1="64.35" y1="29.87416697508023" x2="34.905136271329084" y2="46.87416697508023" stroke="#24313f" stroke-width="1.7" /><line x1="35.55513627132908" y1="48.0" x2="35.55513627132909" y2="82.0" stroke="#24313f" stroke-width="1.7" /><line x1="36.20513627132909" y1="80.87416697508023" x2="65.65" y2="97.87416697508023" stroke="#24313f" stroke-width="1.7" /><line x1="34.90513627132909" y1="83.12583302491977" x2="64.35" y2="100.12583302491977" stroke="#24313f" stroke-width="1.7" /><line x1="65.0" y1="99.0" x2="94.4448637286709" y2="82.00000000000001" stroke="#24313f" stroke-width="1.7" /><line x1="93.1448637286709" y1="82.00000000000001" x2="93.14486372867091" y2="48.0" stroke="#24313f" stroke-width="1.7" /><line x1="95.7448637286709" y1="82.00000000000001" x2="95.74486372867091" y2="48.0" stroke="#24313f" stroke-width="1.7" /><line x1="94.44486372867091" y1="48.0" x2="65.0" y2="31.0" stroke="#24313f" stroke-width="1.7" /><line x1="65.0" y1="31.0" x2="65.0" y2="5.0" stroke="#24313f" stroke-width="1.7" /><text x="79.0" y="9.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#24313f" >OH</text><circle cx="21.7" cy="40.0" r="1.6" fill="#4a6080"/><line x1="35.55513627132909" y1="82.0" x2="13.03847577293369" y2="95.0" stroke="#24313f" stroke-width="1.7" /><text x="-0.9615242270663096" y="99.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#24313f" >OH</text><circle cx="65.0" cy="115.0" r="1.6" fill="#4a6080"/><circle cx="108.3" cy="90.0" r="1.6" fill="#4a6080"/><circle cx="108.3" cy="40.0" r="1.6" fill="#4a6080"/><text x="65" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >meta</text></svg><svg viewBox="0 0 130 132" width="130" height="132" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65.65" y1="32.12583302491977" x2="36.20513627132908" y2="49.12583302491977" stroke="#24313f" stroke-width="1.7" /><line x1="64.35" y1="29.87416697508023" x2="34.905136271329084" y2="46.87416697508023" stroke="#24313f" stroke-width="1.7" /><line x1="35.55513627132908" y1="48.0" x2="35.55513627132909" y2="82.0" stroke="#24313f" stroke-width="1.7" /><line x1="36.20513627132909" y1="80.87416697508023" x2="65.65" y2="97.87416697508023" stroke="#24313f" stroke-width="1.7" /><line x1="34.90513627132909" y1="83.12583302491977" x2="64.35" y2="100.12583302491977" stroke="#24313f" stroke-width="1.7" /><line x1="65.0" y1="99.0" x2="94.4448637286709" y2="82.00000000000001" stroke="#24313f" stroke-width="1.7" /><line x1="93.1448637286709" y1="82.00000000000001" x2="93.14486372867091" y2="48.0" stroke="#24313f" stroke-width="1.7" /><line x1="95.7448637286709" y1="82.00000000000001" x2="95.74486372867091" y2="48.0" stroke="#24313f" stroke-width="1.7" /><line x1="94.44486372867091" y1="48.0" x2="65.0" y2="31.0" stroke="#24313f" stroke-width="1.7" /><line x1="65.0" y1="31.0" x2="65.0" y2="5.0" stroke="#24313f" stroke-width="1.7" /><text x="79.0" y="9.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#24313f" >OH</text><line x1="35.55513627132908" y1="48.0" x2="13.038475772933676" y2="35.0" stroke="#24313f" stroke-width="1.7" /><text x="-0.9615242270663238" y="39.0" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#24313f" >OH</text><circle cx="21.7" cy="90.0" r="1.6" fill="#4a6080"/><circle cx="65.0" cy="115.0" r="1.6" fill="#4a6080"/><circle cx="108.3" cy="90.0" r="1.6" fill="#4a6080"/><circle cx="108.3" cy="40.0" r="1.6" fill="#4a6080"/><text x="65" y="120" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#4a6080" >ortho</text></svg></div>',
+   a:"Both the ortho and meta isomers have a nonzero (net) dipole moment, because their two O–H bond dipole contributions do not point in exactly opposite directions. The para isomer (with the two OH groups directly across the ring from each other) has a net dipole moment of essentially zero, because its symmetry lets the two bond-dipole contributions cancel."},
+  {q:"5. Determine the geometry around every second-row element in each compound below, by counting groups (bonded atoms + lone pairs) on each atom: (a) CH₃–C(=O)–CH₃ (acetone), (b) CH₃–O–CH₃ (dimethyl ether), (c) ⁻NH₂ (the amide ion), (d) CH₃–C≡N (acetonitrile).",fig:'<div class="chem-row"><div class="chem-box"><div class="chem-cap">a. acetone</div><svg viewBox="0 0 155 80" width="155" height="80" class="" xmlns="http://www.w3.org/2000/svg"><text x="22" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >H₃C</text><line x1="40" y1="50" x2="68" y2="50" stroke="#24313f" stroke-width="1.7" /><line x1="72.5" y1="44.0" x2="72.5" y2="16.0" stroke="#24313f" stroke-width="1.7" /><line x1="75.5" y1="44.0" x2="75.5" y2="16.0" stroke="#24313f" stroke-width="1.7" /><line x1="80" y1="54" x2="108" y2="54" stroke="#24313f" stroke-width="1.7" /><text x="128" y="58" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >CH₃</text><circle cx="74" cy="50" r="8" fill="#fff"/><text x="74" y="54.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="74" cy="12" r="9" fill="#fff"/><text x="74" y="16.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="65.2" cy="4.0" r="1.6" fill="#24313f"/><circle cx="62.1" cy="12.5" r="1.6" fill="#24313f"/><circle cx="85.9" cy="12.5" r="1.6" fill="#24313f"/><circle cx="82.8" cy="4.0" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">b. dimethyl ether</div><svg viewBox="0 0 150 85" width="150" height="85" class="" xmlns="http://www.w3.org/2000/svg"><text x="22" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >H₃C</text><line x1="40" y1="50" x2="66" y2="50" stroke="#24313f" stroke-width="1.7" /><line x1="78" y1="50" x2="104" y2="50" stroke="#24313f" stroke-width="1.7" /><text x="126" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >CH₃</text><circle cx="72" cy="50" r="9" fill="#fff"/><text x="72" y="54.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="67.5" cy="63.0" r="1.6" fill="#24313f"/><circle cx="76.5" cy="63.0" r="1.6" fill="#24313f"/><circle cx="76.5" cy="37.0" r="1.6" fill="#24313f"/><circle cx="67.5" cy="37.0" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">c. amide ion, ⁻NH₂</div><svg viewBox="0 0 100 95" width="100" height="95" class="" xmlns="http://www.w3.org/2000/svg"><line x1="55" y1="55" x2="32" y2="40" stroke="#24313f" stroke-width="1.7" /><line x1="55" y1="55" x2="32" y2="72" stroke="#24313f" stroke-width="1.7" /><circle cx="55" cy="55" r="9" fill="#fff"/><text x="55" y="59.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text><circle cx="28" cy="36" r="7" fill="#fff"/><text x="28" y="40.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="28" cy="76" r="7" fill="#fff"/><text x="28" y="80.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="69.0" cy="59.5" r="1.6" fill="#24313f"/><circle cx="69.0" cy="50.5" r="1.6" fill="#24313f"/><circle cx="50.5" cy="69.0" r="1.6" fill="#24313f"/><circle cx="59.5" cy="69.0" r="1.6" fill="#24313f"/><text x="69" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text></svg></div><div class="chem-box"><div class="chem-cap">d. acetonitrile</div><svg viewBox="0 0 135 70" width="135" height="70" class="" xmlns="http://www.w3.org/2000/svg"><text x="22" y="50" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f" >H₃C</text><line x1="40" y1="45" x2="64" y2="45" stroke="#24313f" stroke-width="1.7" /><line x1="70.0" y1="42.0" x2="98.0" y2="42.0" stroke="#24313f" stroke-width="1.7" /><line x1="70.0" y1="45.0" x2="98.0" y2="45.0" stroke="#24313f" stroke-width="1.7" /><line x1="70.0" y1="48.0" x2="98.0" y2="48.0" stroke="#24313f" stroke-width="1.7" /><circle cx="64" cy="45" r="8" fill="#fff"/><text x="64" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="104" cy="45" r="9" fill="#fff"/><text x="104" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text><circle cx="117.0" cy="49.5" r="1.6" fill="#24313f"/><circle cx="117.0" cy="40.5" r="1.6" fill="#24313f"/></svg></div></div>',
+   a:"(a) Acetone: the central (carbonyl) carbon has 3 groups (=O, and 2 C–C bonds) → trigonal planar. Each terminal CH₃ carbon has 4 groups (3 H + 1 C) → tetrahedral.\n(b) Dimethyl ether: each carbon has 4 groups (3 H + 1 O) → tetrahedral. The central O has 4 groups (2 C + 2 lone pairs) → tetrahedral.\n(c) Amide ion, ⁻NH₂: N has 4 groups (2 H + 2 lone pairs) → tetrahedral.\n(d) Acetonitrile: the CH₃ carbon has 4 groups → tetrahedral. The nitrile carbon has 2 groups (1 bond to CH₃ + 1 triple bond to N, counted once) → linear. The N has 2 groups (the triple bond + 1 lone pair) → linear."},
+  {q:"6. Use the VSEPR model to predict the molecular geometry of (a) O₃ and (b) SnCl₃⁻. Show your reasoning.",fig:'<div class="chem-row"><div class="chem-box"><div class="chem-cap">O₃ (one resonance form)</div><svg viewBox="0 0 150 105" width="150" height="105" class="" xmlns="http://www.w3.org/2000/svg"><line x1="50" y1="80" x2="80" y2="45" stroke="#24313f" stroke-width="1.7" /><line x1="80.51403314863047" y1="43.69778269013615" x2="118.51403314863047" y2="58.69778269013615" stroke="#24313f" stroke-width="1.7" /><line x1="79.48596685136953" y1="46.30221730986385" x2="117.48596685136953" y2="61.30221730986385" stroke="#24313f" stroke-width="1.7" /><circle cx="50" cy="80" r="9" fill="#fff"/><text x="50" y="84.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="80" cy="45" r="9" fill="#fff"/><text x="80" y="49.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="118" cy="60" r="9" fill="#fff"/><text x="118" y="64.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="75.5" cy="58.0" r="1.6" fill="#24313f"/><circle cx="84.5" cy="58.0" r="1.6" fill="#24313f"/><circle cx="41.2" cy="72.0" r="1.6" fill="#24313f"/><circle cx="38.1" cy="80.5" r="1.6" fill="#24313f"/><circle cx="54.5" cy="69.0" r="1.6" fill="#24313f"/><circle cx="45.5" cy="69.0" r="1.6" fill="#24313f"/><circle cx="129.0" cy="64.5" r="1.6" fill="#24313f"/><circle cx="129.0" cy="55.5" r="1.6" fill="#24313f"/><circle cx="119.6" cy="71.8" r="1.6" fill="#24313f"/><circle cx="127.4" cy="67.3" r="1.6" fill="#24313f"/><circle cx="129.3" cy="56.4" r="1.6" fill="#24313f"/><circle cx="123.5" cy="49.5" r="1.6" fill="#24313f"/></svg></div><div class="chem-box"><div class="chem-cap">SnCl₃⁻</div><svg viewBox="0 0 135 120" width="135" height="120" class="" xmlns="http://www.w3.org/2000/svg"><line x1="65" y1="68" x2="65" y2="23" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="68" x2="25" y2="92" stroke="#24313f" stroke-width="1.7" /><line x1="65" y1="68" x2="105" y2="92" stroke="#24313f" stroke-width="1.7" /><circle cx="65" cy="68" r="11" fill="#fff"/><text x="65" y="72.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="700" fill="#24313f">Sn</text><circle cx="65" cy="23" r="10" fill="#fff"/><text x="65" y="27.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">Cl</text><circle cx="25" cy="92" r="10" fill="#fff"/><text x="25" y="96.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">Cl</text><circle cx="105" cy="92" r="10" fill="#fff"/><text x="105" y="96.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700" fill="#24313f">Cl</text><circle cx="60.5" cy="83.0" r="1.6" fill="#24313f"/><circle cx="69.5" cy="83.0" r="1.6" fill="#24313f"/><text x="79" y="52" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">−</text></svg></div></div>',
+   a:"(a) O₃: the central O has 3 electron domains — one O–O single bond, one O=O double bond (counted as ONE domain), and one lone pair. 3 domains → trigonal planar electron-domain geometry; removing the lone pair, the molecular shape is bent, with a bond angle just under 120°.\n(b) SnCl₃⁻: the central Sn has 4 electron domains — 3 Sn–Cl bonds and 1 lone pair. 4 domains → tetrahedral electron-domain geometry; removing the lone pair, the molecular shape is trigonal pyramidal, with a bond angle just under 109.5°."},
+  {q:"7. Draw the full Lewis structure of the glycinium cation, [H₃N–CH₂–COOH]⁺, showing all lone pairs, bonds, and the location of the formal positive charge.",fig:'<svg viewBox="0 0 300 155" width="300" height="155" class="" xmlns="http://www.w3.org/2000/svg"><line x1="45" y1="75" x2="95" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="75" x2="145" y2="75" stroke="#24313f" stroke-width="1.7" /><line x1="143.4" y1="75.0" x2="143.4" y2="32.0" stroke="#24313f" stroke-width="1.7" /><line x1="146.6" y1="75.0" x2="146.6" y2="32.0" stroke="#24313f" stroke-width="1.7" /><line x1="145" y1="75" x2="193" y2="100" stroke="#24313f" stroke-width="1.7" /><line x1="193" y1="100" x2="227" y2="78" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="45" y2="37" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="13" y2="97" stroke="#24313f" stroke-width="1.7" /><line x1="45" y1="75" x2="51" y2="115" stroke="#24313f" stroke-width="1.7" /><circle cx="45" cy="37" r="7" fill="#fff"/><text x="45" y="41.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="13" cy="97" r="7" fill="#fff"/><text x="13" y="101.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="51" cy="115" r="7" fill="#fff"/><text x="51" y="119.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><line x1="95" y1="75" x2="85" y2="41" stroke="#24313f" stroke-width="1.7" /><line x1="95" y1="75" x2="105" y2="109" stroke="#24313f" stroke-width="1.7" /><circle cx="85" cy="41" r="7" fill="#fff"/><text x="85" y="45.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="105" cy="109" r="7" fill="#fff"/><text x="105" y="113.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="227" cy="78" r="7" fill="#fff"/><text x="227" y="82.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="10"  fill="#24313f">H</text><circle cx="45" cy="75" r="9" fill="#fff"/><text x="45" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">N</text><circle cx="95" cy="75" r="8" fill="#fff"/><text x="95" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="145" cy="75" r="8" fill="#fff"/><text x="145" y="79.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">C</text><circle cx="145" cy="32" r="9" fill="#fff"/><text x="145" y="36.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="193" cy="100" r="9" fill="#fff"/><text x="193" y="104.5" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#24313f">O</text><circle cx="136.2" cy="24.0" r="1.6" fill="#24313f"/><circle cx="133.1" cy="32.5" r="1.6" fill="#24313f"/><circle cx="156.9" cy="32.5" r="1.6" fill="#24313f"/><circle cx="153.8" cy="24.0" r="1.6" fill="#24313f"/><circle cx="194.6" cy="111.8" r="1.6" fill="#24313f"/><circle cx="202.4" cy="107.3" r="1.6" fill="#24313f"/><circle cx="181.2" cy="101.6" r="1.6" fill="#24313f"/><circle cx="185.7" cy="109.4" r="1.6" fill="#24313f"/><text x="54" y="55" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#24313f">+</text></svg>',
+   a:"Left to right: N is bonded to 3 H's and to the CH₂ carbon (4 bonding domains, no lone pair remaining since it's protonated) — tetrahedral, sp³ — and carries the ion's formal +1 charge. The CH₂ carbon is bonded to N, 2 H's, and the carbonyl carbon (4 bonding domains) — tetrahedral, sp³. The carbonyl carbon is double-bonded to one O, single-bonded to the hydroxyl O, and single-bonded to the CH₂ carbon (3 domains) — trigonal planar, sp². The carbonyl O carries 2 lone pairs and a C=O double bond. The hydroxyl O is bonded to the carbonyl carbon and to an H, plus 2 lone pairs (4 domains) — tetrahedral electron-domain geometry, bent shape, sp³."},
+];
+
+const rQ=[];
+
+function renderAll(){
+  document.querySelectorAll('.qi,.sa-item').forEach(e=>e.remove());
+  rQ.length=0; att=0; cor=0; wrg=0; upd();
+  shuffle(MC).map(shuffleOpts).forEach((q,i)=>{
+    const ri=rQ.length; rQ.push(q);
+    const d=document.createElement('div'); d.className='qi'; d.dataset.done='0';
+    d.innerHTML=`<div class="qs"><span class="qn">${i+1}.</span><div><span class="qt">${q.t}</span>${q.fig?`<div class="chem-fig">${q.fig}</div>`:''}</div></div><div class="og">${q.o.map((o,j)=>`<button class="ob" data-ri="${ri}" data-oi="${j}">${OL[j]}. ${o}</button>`).join('')}</div><div class="fbr" id="fbr${ri}"></div>`;
+    document.getElementById('mc-box').appendChild(d);
+  });
+  document.getElementById('mc-cnt').textContent=MC.length+' questions · shuffled each load';
+
+  SA.forEach((sa,i)=>{
+    const uid='sa'+i;
+    const d=document.createElement('div'); d.className='sa-item';
+    d.innerHTML=`<div class="sa-hd"><span class="qn" style="padding-top:3px;color:var(--c1);font-weight:700;">${i+1}</span><span class="qt" style="font-size:14px;line-height:1.58;">${sa.q}</span></div>
+    ${sa.fig?`<div class="chem-fig" style="padding:0 1.1rem .6rem 2.5rem;">${sa.fig}</div>`:''}
+    <div class="sa-area">
+      <textarea id="${uid}" placeholder="Write your answer here..." oninput="saAnswers['${uid}']=this.value"></textarea>
+      <button class="sa-ans-btn" onclick="toggleSaAns('ans${uid}',this)">Show Answer Key</button>
+      <div class="sa-ans" id="ans${uid}"><b style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--c2);display:block;margin-bottom:.25rem;">Answer Key</b>${sa.a.replace(/\n/g,'<br><br>')}</div>
+    </div>`;
+    document.getElementById('sa-box').appendChild(d);
+  });
+}
+
+function toggleSaAns(id, btn){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+  btn.textContent=el.classList.contains('open')?'Hide Answer Key':'Show Answer Key';
+}
+
+document.addEventListener('click',e=>{
+  if(submitted)return;
+  const b=e.target.closest('.ob'); if(!b)return;
+  const ri=+b.dataset.ri,oi=+b.dataset.oi,item=b.closest('.qi');
+  if(item.dataset.done==='1')return;
+  item.dataset.done='1'; att++;
+  const q=rQ[ri];
+  item.querySelectorAll('.ob').forEach((btn,i)=>{btn.disabled=true;if(i===q.a)btn.classList.add('correct');else if(i===oi&&oi!==q.a)btn.classList.add('wrong');});
+  const fb=document.getElementById('fbr'+ri);
+  if(oi===q.a){cor++;fb.innerHTML=`<span class="fbok">✓ Correct!</span><div class="fbex">${q.e}</div>`;}
+  else{wrg++;fb.innerHTML=`<span class="fbno">✗ Incorrect. Correct answer: ${OL[q.a]}. ${q.o[q.a]}</span><div class="fbex">${q.e}</div>`;}
+  fb.classList.add('show'); upd();
+});
+
+document.getElementById('shuf').addEventListener('click',()=>{
+  if(submitted)return;
+  if(att>0&&!confirm('Shuffle resets your MC score. Continue?'))return;
+  renderAll();
+});
+
+function getStudentInfo(){
+  return {
+    name: document.getElementById('stu-name').value.trim() || '(not entered)',
+    period: document.getElementById('stu-period').value.trim() || '(not entered)',
+    date: document.getElementById('stu-date').value.trim() || new Date().toLocaleDateString(),
+    teacher: document.getElementById('stu-teacher').value.trim() || '(not entered)'
+  };
+}
+
+function finalSubmit(){
+  if(submitted)return;
+  if(!infoLocked){
+    document.getElementById('submit-warning').style.display='block';
+    document.getElementById('submit-warning').textContent='⚠️ Please lock your student info first (Step 1 at the top of the page).';
+    return;
+  }
+  if(!confirm('Submit your work? This will download your results file and lock this page. You cannot undo this.'))return;
+
+  downloadResults();
+  lockPage();
+}
+
+function lockPage(){
+  submitted=true;
+  document.querySelectorAll('.ob').forEach(b=>{b.disabled=true;});
+  document.querySelectorAll('.sa-area textarea').forEach(t=>{t.disabled=true;t.style.background='#f0f7ff';});
+  document.getElementById('shuf').disabled=true;
+  document.getElementById('shuf').style.opacity='.4';
+  const btn=document.getElementById('btn-final-submit');
+  btn.disabled=true; btn.textContent='✅ Submitted'; btn.style.opacity='.6';
+  const ov=document.getElementById('submitted-overlay');
+  ov.style.display='flex';
+  setTimeout(()=>window.scrollTo({top:0,behavior:'smooth'}),400);
+}
+
+function downloadResults(){
+  const info=getStudentInfo();
+  const pct=att>0?Math.round(cor/att*100):0;
+  const saCompleted=SA.filter((_,i)=>(saAnswers['sa'+i]||'').trim().length>0).length;
+
+  let rows='';
+  rQ.forEach((q,i)=>{
+    const item=document.querySelectorAll('.qi')[i];
+    const done=item&&item.dataset.done==='1';
+    let status='Not answered'; let bg='#f8f8f8';
+    if(done){ const isCorrect=!!item.querySelector('.ob.correct'); status=isCorrect?'✓ Correct':'✗ Incorrect'; bg=isCorrect?'#d2f4e4':'#ffd8d8'; }
+    rows+=`<tr style="background:${bg}">
+      <td style="padding:6px 10px;border:1px solid #ccc;font-weight:700;white-space:nowrap;">MC ${i+1}</td>
+      <td style="padding:6px 10px;border:1px solid #ccc;">${q.t}</td>
+      <td style="padding:6px 10px;border:1px solid #ccc;font-weight:700;white-space:nowrap;">${status}</td>
+      <td style="padding:6px 10px;border:1px solid #ccc;">${done&&!item.querySelector('.ob.correct')?'Correct: '+OL[q.a]+'. '+q.o[q.a]:'—'}</td>
+    </tr>`;
+  });
+
+  SA.forEach((sa,i)=>{
+    const ans=(saAnswers['sa'+i]||'').trim();
+    rows+=`<tr style="background:#ddeaff">
+      <td style="padding:6px 10px;border:1px solid #ccc;font-weight:700;white-space:nowrap;">SA ${i+1}</td>
+      <td style="padding:6px 10px;border:1px solid #ccc;">${sa.q}</td>
+      <td style="padding:6px 10px;border:1px solid #ccc;font-weight:700;">${ans?'Answered':'(blank)'}</td>
+      <td style="padding:6px 10px;border:1px solid #ccc;font-style:italic;white-space:pre-wrap;">${ans||'(no answer entered)'}</td>
+    </tr>`;
+  });
+
+  const html=`<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<title>VSEPR/Hybridization Results — ${info.name}</title>
+<style>
+body{font-family:Arial,sans-serif;max-width:960px;margin:2rem auto;padding:1rem;color:#111;}
+h1{color:#1a60b8;font-size:1.5rem;margin-bottom:.3rem;}
+.sub{color:#4a6080;font-size:13px;margin-bottom:1.2rem;}
+.info-bar{background:#f0f7ff;border:1.5px solid #b0cce8;border-radius:6px;padding:.75rem 1rem;margin-bottom:1rem;font-size:13.5px;display:flex;gap:2rem;flex-wrap:wrap;}
+.info-bar span b{color:#1a60b8;}
+.score-row{display:flex;gap:1.5rem;margin-bottom:1.2rem;flex-wrap:wrap;}
+.score-card{background:#1a60b8;color:#fff;border-radius:8px;padding:.8rem 1.4rem;min-width:110px;}
+.score-card .sv{font-size:2rem;font-weight:800;}
+.score-card .sl{font-size:10px;text-transform:uppercase;letter-spacing:.06em;opacity:.8;}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+th{background:#1a2e48;color:#fff;padding:8px 10px;text-align:left;}
+.foot{font-size:11px;color:#666;margin-top:1.5rem;border-top:1px solid #ccc;padding-top:.6rem;}
+</style></head><body>
+<h1>VSEPR, Hybridization &amp; Polarity — Student Results Summary</h1>
+<div class="sub">Chemistry · Covalent Bonding Unit</div>
+<div class="info-bar">
+  <span><b>Name:</b> ${info.name}</span>
+  <span><b>Period:</b> ${info.period}</span>
+  <span><b>Date:</b> ${info.date}</span>
+  <span><b>Teacher:</b> ${info.teacher}</span>
+</div>
+<div class="score-row">
+  <div class="score-card"><div class="sv">${cor}/${att}</div><div class="sl">MC Score</div></div>
+  <div class="score-card"><div class="sv">${pct}%</div><div class="sl">MC Percent</div></div>
+  <div class="score-card" style="background:#0e7240;"><div class="sv">${saCompleted}/${SA.length}</div><div class="sl">SA Answered</div></div>
+</div>
+<table>
+  <tr><th width="70">Question</th><th>Question Text</th><th width="110">Result</th><th>Notes / Your Answer</th></tr>
+  ${rows}
+</table>
+<div class="foot">Submitted: ${new Date().toLocaleString()} · VSEPR, Hybridization &amp; Polarity · Chemistry</div>
+</body></html>`;
+
+  const filename = `VSEPR_Results_${info.name.replace(/\s+/g,'_')||'Student'}_${new Date().toISOString().slice(0,10)}.html`;
+  const blob=new Blob([html],{type:'text/html'});
+  const url=URL.createObjectURL(blob);
+
+  // Safari (especially older/iOS versions) doesn't reliably support the
+  // `download` attribute on Blob URLs — it may just navigate/open the
+  // content instead of saving a file. Feature-detect and fall back to
+  // opening the results in a new tab, where the person can use
+  // Share / File > Save As (or Print) to keep a copy.
+  const supportsDownload = 'download' in document.createElement('a');
+  if(supportsDownload){
+    const a=document.createElement('a');
+    a.href=url;
+    a.download=filename;
+    a.style.display='none';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(()=>{ document.body.removeChild(a); URL.revokeObjectURL(url); }, 1500);
+  } else {
+    const w = window.open(url, '_blank');
+    if(!w){
+      // popup blocked — last resort: navigate the current tab to the results
+      window.location.href = url;
+    }
+    setTimeout(()=>URL.revokeObjectURL(url), 60000);
+  }
+}
+
+renderAll();
+</script>
+</body>
+</html>
